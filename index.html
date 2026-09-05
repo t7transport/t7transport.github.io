@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>旅行社 SOP · 司机 & 行政</title>
+    <!-- ===== 公司 Logo 作为 Favicon ===== -->
+    <link rel="icon" href="./logo.jpg" type="image/jpeg" />
+    <link rel="shortcut icon" href="./logo.jpg" type="image/jpeg" />
     <style>
         * {
             margin: 0;
@@ -40,6 +43,23 @@
             margin-bottom: 1.8rem;
             border-bottom: 2px solid #e6edf4;
             padding-bottom: 1.2rem;
+        }
+
+        .sop-header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .sop-header-left .logo-img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 12px;
+            border: 2px solid #e2ebf3;
+            background: white;
+            padding: 4px;
+            flex-shrink: 0;
         }
 
         .sop-header h1 {
@@ -454,6 +474,7 @@
         @media (max-width: 600px) {
             .sop-container { padding: 1.5rem 1rem; }
             .sop-header h1 { font-size: 1.5rem; }
+            .sop-header-left .logo-img { width: 40px; height: 40px; }
             .tab-btn { padding: 0.5rem 1.2rem; font-size: 0.95rem; }
             .task-item { padding: 0.7rem 1.2rem; }
             .collapse-header { padding: 0.6rem 1.2rem; }
@@ -476,10 +497,14 @@
 
 <div class="sop-container">
     <div class="sop-header">
-        <h1>
-            🚐 旅行社 SOP
-            <small>司机 · 行政</small>
-        </h1>
+        <div class="sop-header-left">
+            <!-- ===== 页面内 Logo ===== -->
+            <img src="./logo.jpg" alt="公司Logo" class="logo-img" />
+            <h1>
+                🚐 旅行社 SOP
+                <small>司机 · 行政</small>
+            </h1>
+        </div>
         <span class="badge-count" id="totalCount">0 项</span>
     </div>
 
@@ -524,13 +549,12 @@
         // ============================================================
         // 图片路径配置 - 使用 ./ 引用同目录文件
         // ============================================================
-        const IMAGE_BASE_PATH = './'; // 使用 ./ 确保在 GitHub Pages 上正确引用
+        const IMAGE_BASE_PATH = './';
 
         // ============================================================
         // 司机 SOP 数据
         // ============================================================
 
-        // ---------- 修车厂数据 ----------
         const workshopData = [
             {
                 name: "Workshop 1",
@@ -558,7 +582,6 @@
             }
         ];
 
-        // ---------- 现金上交地点 ----------
         const cashDropData = [
             {
                 name: "Austin 家",
@@ -580,7 +603,6 @@
             }
         ];
 
-        // ---------- 停车地点 ----------
         const parkingData = [
             { name: "Woodland", address: "Half Price Holdings, 5A Woodlands Centre Rd, Singapore 731005", addressMap: "https://www.google.com/maps/search/?api=1&query=Half+Price+Holdings+5A+Woodlands+Centre+Rd+Singapore", type: "free" },
             { name: "Changi", address: "Changi North Cres, Singapore 49", addressMap: "https://www.google.com/maps/search/?api=1&query=Changi+North+Cres+Singapore", type: "free" },
@@ -593,7 +615,6 @@
             { name: "Jurong Area", address: "KENT RIDGE PARK", addressMap: "https://www.google.com/maps/search/?api=1&query=Kent+Ridge+Park+Singapore", type: "toilet" }
         ];
 
-        // ---------- 每天汽车检查项目 ----------
         const dailyCheckItems = [
             "🌡️ 等车温度热了才走",
             "💧 检查 Tangki 水，记得每天加",
@@ -612,7 +633,6 @@
             "📵 载的顾客不要跟顾客拿号码，也不要给顾客我的号码"
         ];
 
-        // ---------- 其他重要事项 ----------
         const otherImportantItems = [
             "⛽ 如果车剩下半桶油，出来后就要马上在JB打油了才进去。如果你在SG打油，打SGD10只能Claim RM10（尽量不要载着顾客去打油，打好油才去接客）",
             "📸 拿车的时候，录一圈车视频跟只需要拍哪里有伤就可以了，没拍到的刚好伤到会直接Claim上一个司机❗️",
@@ -622,46 +642,51 @@
             "💵 大家最好的话是收Cash。如果不用收钱的单，顾客要转账肯定是转给老板户口（Agent）",
             "📞 顾客要给你钱才打给我们 @所有人",
             "📹 录视频拍照发去公司群就行，然后告诉我们有多少钱就行",
-            "🛂 遇到JPJ Tuas报Kota Tinggi，可以打电话 <a href='https://wa.me/601137135219' target='_blank'>011-3713 5219</a> 跟他说你的车牌",
-            "🎫 如果你们进岛SG Sentosa接客，你们会经过类似Toll的地方，跟顾客要求拿酒店信息或者照片里面这样的Code就不要用Autopass卡付费。很贵Autopass每次要SGD6好像，所以尽量跟顾客拿上面的照片其中一个东西",
-            "💳 Autopass卡一定要记得插卡拔卡，卡一定要记得写车牌，自己买一个笔来写❗️如果这张Autopass卡不见，我事先说明，我会扣工钱❗️几天没有Autopass卡就扣几天的工钱，看车款。如果有本地单跑，我会扣出来，看跑什么单❗️",
-            "🔄 交换司机需交接钱、TNG、油、洗车，确保到位",
-            "📌 载顾客不要拿号码，也不要给顾客老板号码，避免抢客"
+            "🛂 遇到JPJ Tuas报Kota Tinggi，可以打电话 <a href='https://wa.me/601137135219' target='_blank'>011-3713 5219</a> 跟他说你的车牌"
         ];
 
-        // ---------- 公司银行账号 ----------
-        const bankDetails = {
-            bank: "Touch N Go",
-            beneficiary: "TEO GUAN KOK",
-            account: "121821365832",
-            phoneTransfer: "0164137585",
-            note: "记得截图单据发给我们哦🧾"
-        };
-
-        // 二维码图片 - 使用 ./ 路径
-        const qrImages = [
-            { file: IMAGE_BASE_PATH + "duitnow.jpg", label: "DuitNow" },
-            { file: IMAGE_BASE_PATH + "tng.jpg", label: "Touch N Go" },
-            { file: IMAGE_BASE_PATH + "zhifubao.jpg", label: "支付宝" }
+        // ============================================================
+        // 微信客户数据
+        // ============================================================
+        const wechatItems = [
+            "💬 如果你们有接到中国客 在微信群里 该怎么做",
+            "📌 不需要写然后东西 除非有突发状况",
+            "📌 不然的话 像他们这样写就行了"
         ];
 
-        // ---------- MDAC 图片 ----------
-        const mdacImages = [
-            IMAGE_BASE_PATH + "mdac1.jpg",
-            IMAGE_BASE_PATH + "mdac2.jpg",
-            IMAGE_BASE_PATH + "mdac3.jpg",
-            IMAGE_BASE_PATH + "mdac4.jpg",
-            IMAGE_BASE_PATH + "mdac5.jpg",
-            IMAGE_BASE_PATH + "mdac6.jpg"
+        const wechatImages = [
+            { file: IMAGE_BASE_PATH + "weixin1.jpg", label: "微信示例 1" },
+            { file: IMAGE_BASE_PATH + "weixin2.jpg", label: "微信示例 2" }
         ];
 
-        // ---------- 外国人入境须知 ----------
-        const mdacContent = [
-            "⚠️ 请所有人注意以下事项⚠️",
-            "凡事所有不是马来西亚人要入境马来西亚者，从12月7日开始必须填写入境白卡。",
-            "大家可以到 Google Search Malaysia Digital Arrival Card 简称 MDAC。",
-            "你们可以通知你们的顾客在出国的3天里先将个人资料一一填写进去后，直接按Submit。",
-            "请顾客将图片截图起来，以备保存以防万一他们在通关时面临什么问题。"
+        // ============================================================
+        // Sentosa Resort 注意事项
+        // ============================================================
+        const sentosaItems = [
+            "🏝️ 如果你们进岛SG Sentosa接客，你们会经过类似Toll的地方，跟顾客要求拿酒店信息或者照片里面这样的Code就不要用Autopass卡付费",
+            "💰 很贵Autopass每次要SGD6好像，所以尽量跟顾客拿上面的照片其中一个东西"
+        ];
+
+        const sentosaImages = [
+            { file: IMAGE_BASE_PATH + "sentosa1.jpg", label: "Sentosa 示例 1" },
+            { file: IMAGE_BASE_PATH + "sentosa2.jpg", label: "Sentosa 示例 2" }
+        ];
+
+        // ============================================================
+        // 新加坡海关注意事项
+        // ============================================================
+        const customsItems = [
+            "🛃 SG OFFICE 如果来到这里 代表顾客护照有问题 或者你的车将被检查",
+            "🚫 如果你的autopass卡显示error或者路税到期了需要renew 需要过来这里",
+            "✅ 走到这个镜子里面就是autopass office了"
+        ];
+
+        const customsImages = [
+            { file: IMAGE_BASE_PATH + "check1.jpg", label: "SG Office" },
+            { file: IMAGE_BASE_PATH + "custom1.jpg", label: "Custom 1" },
+            { file: IMAGE_BASE_PATH + "custom2.jpg", label: "Custom 2" },
+            { file: IMAGE_BASE_PATH + "custom3.jpg", label: "Custom 3" },
+            { file: IMAGE_BASE_PATH + "office.jpg", label: "Autopass Office" }
         ];
 
         // ============================================================
@@ -678,6 +703,43 @@
             "📤 订单多出来的 拿来换自己需要的时间 普通天通常都是提前一天换就行 换2次 换不到就丢 丢给一些经常有给你订单的人 如果没有的话给第一个就行 大日子 比如说你看到群里1-2个人都在开始丢这个日期或者时间 你就需要提早2-3天丢了 如果是几个小时前的你也要注意 你这个时间还有单就要丢了 优先换你要的订单 然后再丢去群里 先丢微信 再丢whatsapp whatsapp群需要写价格",
             "📝 订单一定要进去表格 这样我们才知道 需要进2边 我们会核对所有资料",
             "🆓 拜2/拜3 所有车不开pass freepass后跑 除了学校假期或者放假 只有MBCC我们也没有接\n\nFree Pass就是我们进sg不需要给sgd35\n\n时间是5pm-2am 拜一到拜五 不需要给sgd35\n\n如果2am-5pm之间是需要给一个sgd35的\n\n除非假期 我会跟你说 12pm后freepass 就是12pm-2am之间不需要给sgd35\n\n或者holiday/跟拜6礼拜是全天 不需要给sgd35"
+        ];
+
+        // ============================================================
+        // 外国人入境须知 (mdac 小写)
+        // ============================================================
+        const mdacContent = [
+            "⚠️ 请所有人注意以下事项⚠️",
+            "凡事所有不是马来西亚人要入境马来西亚者，从12月7日开始必须填写入境白卡。",
+            "大家可以到 Google Search Malaysia Digital Arrival Card 简称 mdac。",
+            "你们可以通知你们的顾客在出国的3天里先将个人资料一一填写进去后，直接按Submit。",
+            "请顾客将图片截图起来，以备保存以防万一他们在通关时面临什么问题。"
+        ];
+
+        const mdacImages = [
+            IMAGE_BASE_PATH + "MDAC1.jpg",
+            IMAGE_BASE_PATH + "MDAC2.jpg",
+            IMAGE_BASE_PATH + "MDAC3.jpg",
+            IMAGE_BASE_PATH + "MDAC4.jpg",
+            IMAGE_BASE_PATH + "MDAC5.jpg",
+            IMAGE_BASE_PATH + "MDAC6.jpg"
+        ];
+
+        // ============================================================
+        // 公司银行账号
+        // ============================================================
+        const bankDetails = {
+            bank: "Touch N Go",
+            beneficiary: "TEO GUAN KOK",
+            account: "121821365832",
+            phoneTransfer: "0164137585",
+            note: "记得截图单据发给我们哦🧾"
+        };
+
+        const qrImages = [
+            { file: IMAGE_BASE_PATH + "duitnow.jpg", label: "DuitNow" },
+            { file: IMAGE_BASE_PATH + "tng.jpg", label: "Touch N Go" },
+            { file: IMAGE_BASE_PATH + "zhifubao.jpg", label: "支付宝" }
         ];
 
         // ============================================================
@@ -702,7 +764,7 @@
         // 辅助函数
         // ============================================================
         function updateStats() {
-            const driverTotal = workshopData.length + cashDropData.length + parkingData.length + dailyCheckItems.length + otherImportantItems.length + 1 + 1;
+            const driverTotal = workshopData.length + cashDropData.length + parkingData.length + dailyCheckItems.length + otherImportantItems.length + 1 + 1 + 1 + 1;
             const adminTotal = adminSOP.length;
             const total = driverTotal + adminTotal;
             driverCount.textContent = driverTotal;
@@ -756,12 +818,39 @@
             return `<span class="ws-line check-item"><span class="check-icon">📌</span> ${item}</span>`;
         }
 
-        function getPlaceholderSVG(label, bgColor = '%23f0f0f0', textColor = '%23999') {
-            return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='${bgColor}'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='${textColor}' font-size='16' font-weight='bold' font-family='sans-serif'%3E${encodeURIComponent(label)}%3C/text%3E%3C/svg%3E`;
+        function generateWechatHTML(item) {
+            return `<span class="ws-line check-item"><span class="check-icon">💬</span> ${item}</span>`;
+        }
+
+        function generateSentosaHTML(item) {
+            return `<span class="ws-line check-item"><span class="check-icon">🏝️</span> ${item}</span>`;
+        }
+
+        function generateCustomsHTML(item) {
+            return `<span class="ws-line check-item"><span class="check-icon">🛃</span> ${item}</span>`;
         }
 
         function getErrorSVG() {
             return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%23fce4e4'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23c0392b' font-size='14' font-weight='bold' font-family='sans-serif'%3E图片加载失败%3C/text%3E%3C/svg%3E`;
+        }
+
+        function generateImagesHTML(images) {
+            let html = `<div class="image-grid">`;
+            for (const img of images) {
+                const errorImg = getErrorSVG();
+                html += `
+                    <div class="image-item">
+                        <span class="image-label">${img.label}</span>
+                        <img src="${img.file}"
+                             data-src="${img.file}"
+                             alt="${img.label}"
+                             onclick="openModal(this)"
+                             onerror="this.src='${errorImg}'" />
+                    </div>
+                `;
+            }
+            html += `</div>`;
+            return html;
         }
 
         function generateBankHTML() {
@@ -774,7 +863,6 @@
 
             html += `<div class="image-grid">`;
             for (const qr of qrImages) {
-                const placeholder = getPlaceholderSVG(qr.label);
                 const errorImg = getErrorSVG();
                 html += `
                     <div class="image-item">
@@ -801,14 +889,13 @@
             for (let i = 0; i < mdacImages.length; i++) {
                 const imgFile = mdacImages[i];
                 const label = `步骤 ${i+1}`;
-                const placeholder = getPlaceholderSVG(`MDAC ${i+1}`, '%23f0f0f0', '%23999');
                 const errorImg = getErrorSVG();
                 html += `
                     <div class="image-item">
                         <span class="image-label">${label}</span>
                         <img src="${imgFile}"
                              data-src="${imgFile}"
-                             alt="MDAC 步骤 ${i+1}"
+                             alt="mdac 步骤 ${i+1}"
                              onclick="openModal(this)"
                              onerror="this.src='${errorImg}'" />
                     </div>
@@ -853,6 +940,51 @@
             return section;
         }
 
+        // 带图片的折叠板块
+        function createImageCollapseSection(title, icon, items, images, renderFn) {
+            const section = document.createElement('li');
+            section.className = 'collapse-section';
+            section.style.listStyle = 'none';
+
+            const header = document.createElement('div');
+            header.className = 'collapse-header';
+            header.innerHTML = `
+                <span class="title">${icon} ${title} <span style="font-weight:400;color:#6d8aa8;font-size:0.8rem;">(1项)</span></span>
+                <span class="arrow">▼</span>
+            `;
+
+            const body = document.createElement('div');
+            body.className = 'collapse-body';
+
+            for (const item of items) {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'task-item';
+                const textSpan = document.createElement('span');
+                textSpan.className = 'task-text';
+                textSpan.innerHTML = renderFn(item);
+                itemDiv.appendChild(textSpan);
+                body.appendChild(itemDiv);
+            }
+
+            const imgDiv = document.createElement('div');
+            imgDiv.className = 'task-item';
+            const imgSpan = document.createElement('span');
+            imgSpan.className = 'task-text';
+            imgSpan.innerHTML = generateImagesHTML(images);
+            imgDiv.appendChild(imgSpan);
+            body.appendChild(imgDiv);
+
+            header.addEventListener('click', function() {
+                const isOpen = body.classList.toggle('open');
+                header.querySelector('.arrow').classList.toggle('open', isOpen);
+            });
+
+            section.appendChild(header);
+            section.appendChild(body);
+            return section;
+        }
+
+        // 银行账号折叠板块
         function createBankSection() {
             const section = document.createElement('li');
             section.className = 'collapse-section';
@@ -886,6 +1018,7 @@
             return section;
         }
 
+        // mdac 折叠板块
         function createMDACSection() {
             const section = document.createElement('li');
             section.className = 'collapse-section';
@@ -920,33 +1053,6 @@
         }
 
         // ============================================================
-        // 图片加载和放大功能
-        // ============================================================
-        // 图片加载函数 - 直接显示，因为 src 已经是实际路径
-        function loadImages() {
-            // 所有图片的 src 已经是实际路径，无需额外加载
-            // 此函数保留以防未来需要
-        }
-
-        window.openModal = function(imgElement) {
-            const src = imgElement.getAttribute('src');
-            if (src && !src.includes('data:image')) {
-                modalImg.src = src;
-                modal.classList.add('active');
-            }
-        };
-
-        modal.addEventListener('click', function() {
-            this.classList.remove('active');
-        });
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                modal.classList.remove('active');
-            }
-        });
-
-        // ============================================================
         // 渲染司机列表
         // ============================================================
         function renderDriverList() {
@@ -966,6 +1072,15 @@
 
             const otherSection = createCollapseSection('其他重要事项', '📋', otherImportantItems.length, otherImportantItems, generateOtherImportantHTML);
             driverList.appendChild(otherSection);
+
+            const wechatSection = createImageCollapseSection('微信客户', '💬', wechatItems, wechatImages, generateWechatHTML);
+            driverList.appendChild(wechatSection);
+
+            const sentosaSection = createImageCollapseSection('Sentosa Resort 注意事项', '🏝️', sentosaItems, sentosaImages, generateSentosaHTML);
+            driverList.appendChild(sentosaSection);
+
+            const customsSection = createImageCollapseSection('新加坡海关注意事项', '🛃', customsItems, customsImages, generateCustomsHTML);
+            driverList.appendChild(customsSection);
 
             const bankSection = createBankSection();
             driverList.appendChild(bankSection);
@@ -1012,6 +1127,27 @@
 
         tabDriver.addEventListener('click', () => switchTab('driver'));
         tabAdmin.addEventListener('click', () => switchTab('admin'));
+
+        // ============================================================
+        // 图片放大功能
+        // ============================================================
+        window.openModal = function(imgElement) {
+            const src = imgElement.getAttribute('src') || imgElement.getAttribute('data-src');
+            if (src && !src.includes('data:image')) {
+                modalImg.src = src;
+                modal.classList.add('active');
+            }
+        };
+
+        modal.addEventListener('click', function() {
+            this.classList.remove('active');
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+            }
+        });
 
         // ============================================================
         // 初始化
