@@ -522,7 +522,14 @@
         "use strict";
 
         // ============================================================
-        // 司机 SOP 数据 (完整保留)
+        // 图片路径配置 - 请根据实际存放位置修改
+        // ============================================================
+        const IMAGE_BASE_PATH = ''; // 如果图片与HTML同目录，留空即可
+        // 如果图片在子文件夹中，例如 images/ ，则设置为 'images/'
+        // 如果图片在上级目录，例如 ../ ，则设置为 '../'
+
+        // ============================================================
+        // 司机 SOP 数据
         // ============================================================
 
         // ---------- 修车厂数据 ----------
@@ -634,19 +641,19 @@
         };
 
         const qrImages = [
-            { file: "duitnow.jpg", label: "DuitNow" },
-            { file: "tng.jpg", label: "Touch N Go" },
-            { file: "zhifubao.jpg", label: "支付宝" }
+            { file: IMAGE_BASE_PATH + "duitnow.jpg", label: "DuitNow" },
+            { file: IMAGE_BASE_PATH + "tng.jpg", label: "Touch N Go" },
+            { file: IMAGE_BASE_PATH + "zhifubao.jpg", label: "支付宝" }
         ];
 
         // ---------- MDAC 图片 ----------
         const mdacImages = [
-            "MDAC1.jpg",
-            "MDAC2.jpg",
-            "MDAC3.jpg",
-            "MDAC4.jpg",
-            "MDAC5.jpg",
-            "MDAC6.jpg"
+            IMAGE_BASE_PATH + "MDAC1.jpg",
+            IMAGE_BASE_PATH + "MDAC2.jpg",
+            IMAGE_BASE_PATH + "MDAC3.jpg",
+            IMAGE_BASE_PATH + "MDAC4.jpg",
+            IMAGE_BASE_PATH + "MDAC5.jpg",
+            IMAGE_BASE_PATH + "MDAC6.jpg"
         ];
 
         // ---------- 外国人入境须知 ----------
@@ -750,6 +757,14 @@
             return `<span class="ws-line check-item"><span class="check-icon">📌</span> ${item}</span>`;
         }
 
+        function getPlaceholderSVG(label, bgColor = '%23f0f0f0', textColor = '%23999') {
+            return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='${bgColor}'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='${textColor}' font-size='16' font-weight='bold' font-family='sans-serif'%3E${encodeURIComponent(label)}%3C/text%3E%3C/svg%3E`;
+        }
+
+        function getErrorSVG() {
+            return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%23fce4e4'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23c0392b' font-size='14' font-weight='bold' font-family='sans-serif'%3E图片加载失败%3C/text%3E%3C/svg%3E`;
+        }
+
         function generateBankHTML() {
             let html = '';
             html += `<span class="ws-line label"><span class="ws-icon">🏦</span> 银行：${bankDetails.bank}</span>`;
@@ -760,13 +775,16 @@
 
             html += `<div class="image-grid">`;
             for (const qr of qrImages) {
+                const placeholder = getPlaceholderSVG(qr.label);
+                const errorImg = getErrorSVG();
                 html += `
                     <div class="image-item">
                         <span class="image-label">${qr.label}</span>
-                        <img src="${qr.file}" 
+                        <img src="${placeholder}"
+                             data-src="${qr.file}"
                              alt="${qr.label} QR Code"
                              onclick="openModal(this)"
-                             onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2216%22 font-weight=%22bold%22 font-family=%22sans-serif%22%3E${qr.label}%3C/text%3E%3C/svg%3E'" />
+                             onerror="this.src='${errorImg}'" />
                     </div>
                 `;
             }
@@ -784,13 +802,16 @@
             for (let i = 0; i < mdacImages.length; i++) {
                 const imgFile = mdacImages[i];
                 const label = `步骤 ${i+1}`;
+                const placeholder = getPlaceholderSVG(`MDAC ${i+1}`, '%23f0f0f0', '%23999');
+                const errorImg = getErrorSVG();
                 html += `
                     <div class="image-item">
                         <span class="image-label">${label}</span>
-                        <img src="${imgFile}" 
+                        <img src="${placeholder}"
+                             data-src="${imgFile}"
                              alt="MDAC 步骤 ${i+1}"
                              onclick="openModal(this)"
-                             onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2216%22 font-weight=%22bold%22 font-family=%22sans-serif%22%3EMDAC ${i+1}%3C/text%3E%3C/svg%3E'" />
+                             onerror="this.src='${errorImg}'" />
                     </div>
                 `;
             }
@@ -900,13 +921,35 @@
         }
 
         // ============================================================
-        // 图片放大功能
+        // 图片加载和放大功能
         // ============================================================
+        function loadImages() {
+            document.querySelectorAll('.image-item img[data-src]').forEach(img => {
+                const dataSrc = img.getAttribute('data-src');
+                if (dataSrc) {
+                    const testImg = new Image();
+                    testImg.onload = function() {
+                        img.src = dataSrc;
+                    };
+                    testImg.onerror = function() {
+                        // 保持占位图或错误图
+                    };
+                    testImg.src = dataSrc;
+                }
+            });
+        }
+
         window.openModal = function(imgElement) {
-            const src = imgElement.getAttribute('src');
-            if (src) {
+            const src = imgElement.getAttribute('data-src') || imgElement.getAttribute('src');
+            if (src && !src.includes('data:image')) {
                 modalImg.src = src;
                 modal.classList.add('active');
+            } else if (src && src.includes('data:image')) {
+                const dataSrc = imgElement.getAttribute('data-src');
+                if (dataSrc) {
+                    modalImg.src = dataSrc;
+                    modal.classList.add('active');
+                }
             }
         };
 
@@ -949,7 +992,7 @@
         }
 
         // ============================================================
-        // 渲染行政列表 (直接显示，无折叠)
+        // 渲染行政列表
         // ============================================================
         function renderAdminList() {
             adminList.innerHTML = '';
@@ -958,7 +1001,6 @@
                 li.className = 'task-item';
                 const textSpan = document.createElement('span');
                 textSpan.className = 'task-text';
-                // 处理换行：将 \n\n 替换为 <br><br>
                 const formattedText = adminSOP[i].replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
                 textSpan.innerHTML = formattedText;
                 li.appendChild(textSpan);
@@ -973,6 +1015,7 @@
             renderDriverList();
             renderAdminList();
             updateStats();
+            setTimeout(loadImages, 200);
         }
 
         // ============================================================
