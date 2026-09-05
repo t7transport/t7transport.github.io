@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>旅行社 SOP · 司机 & 行政</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            background: #f0f5fa;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sop-container {
+            max-width: 900px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 40px;
+            box-shadow: 0 20px 50px rgba(0, 20, 40, 0.10);
+            padding: 2.2rem 2.2rem 2.8rem;
+            border: 1px solid rgba(200, 215, 230, 0.3);
+        }
+
+        .sop-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.8rem;
+            border-bottom: 2px solid #e6edf4;
+            padding-bottom: 1.2rem;
+        }
+
+        .sop-header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1a2e3f;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .sop-header h1 small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #5b7a94;
+            background: #eaf1f8;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            margin-left: 0.4rem;
+        }
+
+        .badge-count {
+            background: #1a2e3f;
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.2rem 1.4rem;
+            border-radius: 60px;
+            background: #3a6a8f;
+            white-space: nowrap;
+        }
+
+        .sop-intro {
+            background: #f3f8fe;
+            border-radius: 20px;
+            padding: 0.6rem 1.6rem;
+            margin-bottom: 1.8rem;
+            color: #1f405b;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            border-left: 4px solid #3f8ab3;
+        }
+        .sop-intro span { opacity: 0.6; }
+
+        .tab-bar {
+            display: flex;
+            gap: 0.2rem;
+            margin-bottom: 1.8rem;
+            border-bottom: 2px solid #e2ebf3;
+            padding-bottom: 0.1rem;
+        }
+
+        .tab-btn {
+            padding: 0.7rem 2.2rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border: none;
+            background: transparent;
+            color: #6d8aa8;
+            cursor: pointer;
+            border-radius: 40px 40px 0 0;
+            transition: all 0.15s;
+            position: relative;
+            letter-spacing: 0.3px;
+        }
+
+        .tab-btn:hover {
+            background: #eaf1f8;
+            color: #1a2e3f;
+        }
+
+        .tab-btn.active {
+            color: #1a2e3f;
+            background: #eaf1f8;
+            box-shadow: inset 0 -3px 0 #3f8ab3;
+        }
+
+        .tab-btn .tab-count {
+            background: #c6d8e8;
+            color: #1f405b;
+            font-size: 0.7rem;
+            padding: 0.05rem 0.7rem;
+            border-radius: 40px;
+            margin-left: 0.4rem;
+            font-weight: 500;
+        }
+
+        .tab-btn.active .tab-count {
+            background: #3f8ab3;
+            color: white;
+        }
+
+        .tab-content {
+            display: block;
+            transition: opacity 0.2s ease;
+        }
+
+        .tab-content.hidden {
+            display: none;
+        }
+
+        .task-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .task-item {
+            background: white;
+            border-radius: 60px;
+            padding: 0.7rem 1.8rem;
+            display: flex;
+            align-items: center;
+            border: 1px solid #e2ebf3;
+            transition: all 0.12s;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.01);
+        }
+
+        .task-item:hover {
+            border-color: #b8d0e3;
+            background: #fafcff;
+            box-shadow: 0 4px 12px rgba(40, 80, 120, 0.04);
+        }
+
+        .task-text {
+            flex: 1;
+            font-size: 0.95rem;
+            color: #1c3142;
+            word-break: break-word;
+            line-height: 1.6;
+            font-family: inherit;
+        }
+
+        .task-text a {
+            color: #1a2e3f;
+            text-decoration: none;
+            font-weight: 500;
+            background: #eaf1f8;
+            padding: 0.05rem 0.8rem;
+            border-radius: 40px;
+            display: inline-block;
+            transition: background 0.15s;
+        }
+
+        .task-text a:hover {
+            background: #d4e2f0;
+            text-decoration: underline;
+            color: #3f8ab3;
+        }
+
+        /* ===== 可折叠板块 ===== */
+        .collapse-section {
+            border: 1px solid #e2ebf3;
+            border-radius: 20px;
+            margin-bottom: 0.6rem;
+            background: white;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        .collapse-section:hover {
+            border-color: #b8d0e3;
+        }
+
+        .collapse-header {
+            padding: 0.7rem 1.8rem;
+            background: #f8fbfe;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+            transition: background 0.15s;
+            border-radius: 20px;
+        }
+
+        .collapse-header:hover {
+            background: #eef4f9;
+        }
+
+        .collapse-header .title {
+            font-weight: 600;
+            font-size: 0.98rem;
+            color: #1a2e3f;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .collapse-header .arrow {
+            font-size: 1.1rem;
+            color: #6d8aa8;
+            transition: transform 0.25s ease;
+            font-weight: 300;
+        }
+
+        .collapse-header .arrow.open {
+            transform: rotate(180deg);
+        }
+
+        .collapse-body {
+            padding: 0.3rem 0.5rem 0.8rem 0.5rem;
+            background: white;
+            transition: all 0.25s ease;
+            display: none;
+        }
+
+        .collapse-body.open {
+            display: block;
+        }
+
+        .collapse-body .task-item {
+            border-radius: 40px;
+            margin: 0.2rem 0.6rem;
+            padding: 0.6rem 1.4rem;
+            border-color: #eaf1f8;
+            background: #fafcff;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.15rem;
+        }
+
+        .collapse-body .task-item:hover {
+            background: #f3f8fe;
+            border-color: #c6d8e8;
+        }
+
+        .collapse-body .task-item .task-text {
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .collapse-body .task-item .task-text .ws-line {
+            display: block;
+            padding: 0.05rem 0;
+        }
+
+        .collapse-body .task-item .task-text .ws-line a {
+            color: #1a2e3f;
+            text-decoration: none;
+            font-weight: 500;
+            background: #eaf1f8;
+            padding: 0.05rem 0.8rem;
+            border-radius: 40px;
+            display: inline-block;
+            transition: background 0.15s;
+        }
+
+        .collapse-body .task-item .task-text .ws-line a:hover {
+            background: #d4e2f0;
+            text-decoration: underline;
+            color: #3f8ab3;
+        }
+
+        .collapse-body .task-item .task-text .ws-line.phone a {
+            background: #eaf1f8;
+        }
+
+        .collapse-body .task-item .task-text .ws-line.address a {
+            background: #e6f0fa;
+        }
+
+        .collapse-body .task-item .task-text .ws-line.label {
+            font-weight: 600;
+            color: #1a2e3f;
+            margin-top: 0.1rem;
+        }
+
+        .collapse-body .task-item .task-text .ws-line.label .ws-icon {
+            margin-right: 0.3rem;
+        }
+
+        .collapse-body .task-item .task-text .ws-line.tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.05rem 0.8rem;
+            border-radius: 40px;
+            margin-top: 0.1rem;
+        }
+
+        .collapse-body .task-item .task-text .ws-line.tag.free {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .collapse-body .task-item .task-text .ws-line.tag.toilet {
+            background: #cce5ff;
+            color: #004085;
+        }
+
+        .collapse-body .task-item .task-text .ws-line.check-item {
+            padding-left: 0.3rem;
+            color: #1a2e3f;
+        }
+
+        .collapse-body .task-item .task-text .ws-line.check-item .check-icon {
+            margin-right: 0.4rem;
+        }
+
+        .collapse-body .task-item .task-text .ws-line.important {
+            color: #c0392b;
+            font-weight: 600;
+        }
+
+        /* ===== 图片网格样式 ===== */
+        .image-grid {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 0.3rem;
+            justify-content: flex-start;
+        }
+
+        .image-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.2rem;
+        }
+
+        .image-item .image-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #4f6b81;
+            background: #eaf1f8;
+            padding: 0.05rem 0.8rem;
+            border-radius: 40px;
+        }
+
+        .image-item img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            border-radius: 16px;
+            border: 2px solid #e2ebf3;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+            background: white;
+            padding: 6px;
+        }
+
+        .image-item img:hover {
+            transform: scale(1.04);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+        }
+
+        /* ===== 图片放大模态框 ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            background: white;
+            padding: 12px;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #8da3b8;
+            padding: 2.2rem 0.5rem;
+            font-size: 0.95rem;
+            background: rgba(220, 235, 248, 0.15);
+            border-radius: 60px;
+            border: 1px dashed #c2d6e8;
+        }
+
+        .footer-actions {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 1.8rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e6edf4;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .footer-actions .info {
+            font-size: 0.85rem;
+            color: #4f6b81;
+            background: #f1f6fb;
+            padding: 0.1rem 1.4rem;
+            border-radius: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .sop-container { padding: 1.5rem 1rem; }
+            .sop-header h1 { font-size: 1.5rem; }
+            .tab-btn { padding: 0.5rem 1.2rem; font-size: 0.95rem; }
+            .task-item { padding: 0.7rem 1.2rem; }
+            .collapse-header { padding: 0.6rem 1.2rem; }
+            .collapse-body .task-item { margin: 0.2rem 0.3rem; padding: 0.6rem 1rem; }
+            .collapse-body .task-item .task-text .ws-line a {
+                padding: 0.05rem 0.5rem;
+                font-size: 0.85rem;
+            }
+            .image-item img {
+                width: 90px;
+                height: 90px;
+            }
+            .image-grid {
+                gap: 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="sop-container">
+    <div class="sop-header">
+        <h1>
+            🚐 旅行社 SOP
+            <small>司机 · 行政</small>
+        </h1>
+        <span class="badge-count" id="totalCount">0 项</span>
+    </div>
+
+    <div class="sop-intro">
+        <span>📌</span> 员工 SOP 参考手册 · 点击折叠板块展开/收起
+        <span style="margin-left:auto; opacity:0.4;">版本 1.0</span>
+    </div>
+
+    <div class="tab-bar">
+        <button class="tab-btn active" data-tab="driver" id="tabDriver">
+            🧑‍✈️ 司机 SOP
+            <span class="tab-count" id="driverCount">0</span>
+        </button>
+        <button class="tab-btn" data-tab="admin" id="tabAdmin">
+            📋 行政 SOP
+            <span class="tab-count" id="adminCount">0</span>
+        </button>
+    </div>
+
+    <div id="driverTab" class="tab-content">
+        <ul class="task-list" id="driverList"></ul>
+    </div>
+
+    <div id="adminTab" class="tab-content hidden">
+        <ul class="task-list" id="adminList"></ul>
+    </div>
+
+    <div class="footer-actions">
+        <div class="info" id="progressInfo">📊 共 0 条规则</div>
+    </div>
+</div>
+
+<!-- ===== 图片放大模态框 ===== -->
+<div class="modal-overlay" id="imageModal">
+    <img id="modalImage" src="" alt="放大查看" />
+</div>
+
+<script>
+    (function() {
+        "use strict";
+
+        // ============================================================
+        // 司机 SOP 数据 (完整保留)
+        // ============================================================
+
+        // ---------- 修车厂数据 ----------
+        const workshopData = [
+            {
+                name: "Workshop 1",
+                phone: "https://wa.me/60187858789",
+                phoneLabel: "杰",
+                address: "68, Jalan Bakawali 52",
+                addressMap: "https://www.google.com/maps/search/?api=1&query=68+Jalan+Bakawali+52+Johor+Malaysia",
+                notes: "过去前打给他，跟他说你的车要弄什么（黑油/牙油/其他问题），看几点要过去，跟他通知就行"
+            },
+            {
+                name: "Workshop 2",
+                phone: "https://wa.me/60127008548",
+                phoneLabel: "",
+                address: "No 6, Jalan Bakawali 37, Taman Johor Jaya 81100",
+                addressMap: "https://www.google.com/maps/search/?api=1&query=6+Jalan+Bakawali+37+Taman+Johor+Jaya+81100+Malaysia",
+                notes: "钱他会对我收，如果不是很贵的直接弄就可以了，如果是贵的东西，打电话问我一下"
+            },
+            {
+                name: "Workshop 3",
+                phone: "https://wa.me/60167231217",
+                phoneLabel: "",
+                address: "No 1, Jalan Anggerik 36, Taman Johor Jaya",
+                addressMap: "https://www.google.com/maps/search/?api=1&query=1+Jalan+Anggerik+36+Taman+Johor+Jaya+Malaysia",
+                notes: "周日休息 · 9am-6pm · 4.30pm之前要放车过去"
+            }
+        ];
+
+        // ---------- 现金上交地点 ----------
+        const cashDropData = [
+            {
+                name: "Austin 家",
+                address: "26, Jalan Austin Height 5/24",
+                addressMap: "https://www.google.com/maps/search/?api=1&query=26+Jalan+Austin+Height+5/24+Johor+Malaysia",
+                notes: "开门把钱塞进去家里门缝内，告诉我有多少钱"
+            },
+            {
+                name: "坡地家",
+                address: "2, Jalan Leban, Taman Melodies",
+                addressMap: "https://www.google.com/maps/search/?api=1&query=2+Jalan+Leban+Taman+Melodies+Johor+Malaysia",
+                notes: "不要门铃，我孩子有时候在睡觉，直接放进去信箱就行，记得推进去里面"
+            },
+            {
+                name: "Horizon Hill 家",
+                address: "24, Jalan Maya 3/5, Horizon Hill, 79100 Iskandar Puteri",
+                addressMap: "https://www.google.com/maps/search/?api=1&query=24+Jalan+Maya+3/5+Horizon+Hill+Iskandar+Puteri+Malaysia",
+                notes: "直接放进去信箱就行"
+            }
+        ];
+
+        // ---------- 停车地点 ----------
+        const parkingData = [
+            { name: "Woodland", address: "Half Price Holdings, 5A Woodlands Centre Rd, Singapore 731005", addressMap: "https://www.google.com/maps/search/?api=1&query=Half+Price+Holdings+5A+Woodlands+Centre+Rd+Singapore", type: "free" },
+            { name: "Changi", address: "Changi North Cres, Singapore 49", addressMap: "https://www.google.com/maps/search/?api=1&query=Changi+North+Cres+Singapore", type: "free" },
+            { name: "Changi", address: "CHARGE+, 60 Tampines North Dr 2, Singapore 528764", addressMap: "https://www.google.com/maps/search/?api=1&query=60+Tampines+North+Dr+2+Singapore", type: "free" },
+            { name: "Jurong Area", address: "Pusara Aman Mosque", addressMap: "https://www.google.com/maps/search/?api=1&query=Pusara+Aman+Mosque+Singapore", type: "toilet" },
+            { name: "Jurong Area", address: "SELETAR CLUB ROAD", addressMap: "https://www.google.com/maps/search/?api=1&query=Seletar+Club+Road+Singapore", type: "toilet" },
+            { name: "Jurong Area", address: "EDWARDS LIFESCIENCES", addressMap: "https://www.google.com/maps/search/?api=1&query=Edwards+Lifesciences+Singapore", type: "toilet" },
+            { name: "Jurong Area", address: "GIANT HYPERMART TAMPINES", addressMap: "https://www.google.com/maps/search/?api=1&query=Giant+Hypermart+Tampines+Singapore", type: "toilet" },
+            { name: "Jurong Area", address: "EAST COAST PARK", addressMap: "https://www.google.com/maps/search/?api=1&query=East+Coast+Park+Singapore", type: "toilet" },
+            { name: "Jurong Area", address: "KENT RIDGE PARK", addressMap: "https://www.google.com/maps/search/?api=1&query=Kent+Ridge+Park+Singapore", type: "toilet" }
+        ];
+
+        // ---------- 每天汽车检查项目 ----------
+        const dailyCheckItems = [
+            "🌡️ 等车温度热了才走",
+            "💧 检查 Tangki 水，记得每天加",
+            "🛢️ 检查黑油够不够",
+            "🌀 检查风扇有没有在转",
+            "💨 检查 Tayar 风够吗",
+            "🧽 洗车（三天一次，或严重肮脏必须清洗）",
+            "🔧 检查 Spare Tayar 有没有风",
+            "🔍 检查 Tayar 有没有中钉 / 花纹够不够",
+            "👖 长裤包鞋一定要有，包鞋可以放车上",
+            "👔 载顾客一定要穿包鞋长裤",
+            "🧹 车子麻烦保持干净",
+            "🚗 车跑太久了，不要马上拿车去洗，给车休息15分钟才去洗",
+            "🚪 驾什么车都好都要帮顾客开关门，这个是我们的工作",
+            "💳 检查 Autopass 卡是不是车牌号码有写上去",
+            "📵 载的顾客不要跟顾客拿号码，也不要给顾客我的号码"
+        ];
+
+        // ---------- 其他重要事项 ----------
+        const otherImportantItems = [
+            "⛽ 如果车剩下半桶油，出来后就要马上在JB打油了才进去。如果你在SG打油，打SGD10只能Claim RM10（尽量不要载着顾客去打油，打好油才去接客）",
+            "📸 拿车的时候，录一圈车视频跟只需要拍哪里有伤就可以了，没拍到的刚好伤到会直接Claim上一个司机❗️",
+            "🚫 如果顾客在车上要订车还是问你价格，叫他联系回老板，你说你只是负责载人，价格方面不清楚。最近很多老板会叫自己的家人来用车然后来问司机价格，如果发现抢别人顾客或者我们的顾客，我将扣除所有工钱！",
+            "🚗 普通路跑40-60，Highway 80-130，有超过的，真的没车情况下可以到140。我会注意看，到时候不要说没有提醒你们。如果有心要做的就跟着照做，我也不会去打扰你们做工。如果觉得不适应，提早2个礼拜通知就可以了，不会强留。麻烦大家互相配合下👍👍👍👍",
+            "💰 如果要跟顾客收钱，记得在要到顾客家5分钟前的路上就跟顾客收钱，不要等到到顾客家了才收。如果顾客要转账记得不需要给顾客户口，你可以直接问顾客老板或者订车的人有给你吗，如果没有你才给我们的户口。切记❗️❗️❗️",
+            "💵 大家最好的话是收Cash。如果不用收钱的单，顾客要转账肯定是转给老板户口（Agent）",
+            "📞 顾客要给你钱才打给我们 @所有人",
+            "📹 录视频拍照发去公司群就行，然后告诉我们有多少钱就行",
+            "🛂 遇到JPJ Tuas报Kota Tinggi，可以打电话 <a href='https://wa.me/601137135219' target='_blank'>011-3713 5219</a> 跟他说你的车牌",
+            "🎫 如果你们进岛SG Sentosa接客，你们会经过类似Toll的地方，跟顾客要求拿酒店信息或者照片里面这样的Code就不要用Autopass卡付费。很贵Autopass每次要SGD6好像，所以尽量跟顾客拿上面的照片其中一个东西",
+            "💳 Autopass卡一定要记得插卡拔卡，卡一定要记得写车牌，自己买一个笔来写❗️如果这张Autopass卡不见，我事先说明，我会扣工钱❗️几天没有Autopass卡就扣几天的工钱，看车款。如果有本地单跑，我会扣出来，看跑什么单❗️",
+            "🔄 交换司机需交接钱、TNG、油、洗车，确保到位",
+            "📌 载顾客不要拿号码，也不要给顾客老板号码，避免抢客"
+        ];
+
+        // ---------- 公司银行账号 ----------
+        const bankDetails = {
+            bank: "Touch N Go",
+            beneficiary: "TEO GUAN KOK",
+            account: "121821365832",
+            phoneTransfer: "0164137585",
+            note: "记得截图单据发给我们哦🧾"
+        };
+
+        const qrImages = [
+            { file: "duitnow.jpg", label: "DuitNow" },
+            { file: "tng.jpg", label: "Touch N Go" },
+            { file: "zhifubao.jpg", label: "支付宝" }
+        ];
+
+        // ---------- MDAC 图片 ----------
+        const mdacImages = [
+            "MDAC1.jpg",
+            "MDAC2.jpg",
+            "MDAC3.jpg",
+            "MDAC4.jpg",
+            "MDAC5.jpg",
+            "MDAC6.jpg"
+        ];
+
+        // ---------- 外国人入境须知 ----------
+        const mdacContent = [
+            "⚠️ 请所有人注意以下事项⚠️",
+            "凡事所有不是马来西亚人要入境马来西亚者，从12月7日开始必须填写入境白卡。",
+            "大家可以到 Google Search Malaysia Digital Arrival Card 简称 MDAC。",
+            "你们可以通知你们的顾客在出国的3天里先将个人资料一一填写进去后，直接按Submit。",
+            "请顾客将图片截图起来，以备保存以防万一他们在通关时面临什么问题。"
+        ];
+
+        // ============================================================
+        // 行政 SOP 数据 (10条规则)
+        // ============================================================
+        const adminSOP = [
+            "📅 每个拜一 2pm 准时 问全部司机 叫司机拍照镜子上的粘纸全部拍照/meter表拍照 检查司机黑油牙油等等 是不是全部到期了 是的话 给阿杰店的地址 tayar到了给tayar店的地址",
+            "🧼 留意司机是不是都有拿车去洗 大概2-3天时间 一次 晚班留意 12am",
+            "⏰ 打开GPS set好闹钟 全部司机下一张单来得及吗 看司机到哪里了 司机起床了吗 比如11am的单 9am set闹钟 看他起来了吗 10am set闹钟 看他出发了吗 10.30am set 看他是不是在路上了 随时followup 如果来不及 马上丢群 丢群找不到车 再跟agent联系好 说会迟有在群里找车了 找不到 你只需要帮公司丢司机来不及的单或者换单或者给回认识的人单\n\n司机如果接的单 是sg to jb 10am 司机在jb的话 如果没单的情况下 你需要提前2个小时 就是8am 让他起床准备 准备到来差不多8.30am 8.45am必须已经从家里出发去sg 如果司机是在sg的 你只需要让他提前一个小时起来 就是9am 让他起来了通知你",
+            "🚗 司机载到顾客了 看司机有没有在群里说 接了或者写P 需要通知agent说上车了 下车了需要看有没有收钱司机 下车了需要写 下车了或者D 然后旁边多少钱 下完后马上跟agent说下车了 然后收钱对账 （有些agent是一个月）1-2个罢了 其他的全部当下对账收钱转账 如果没有的话就放着就行",
+            "🔄 交换司机 在公司群里通知就行 跟下一个司机拿电话号码11pm-1am交换 跟司机拿地址还有联系方式 发在群里 确保司机身上的钱已经交给下个司机或者已经交过来我的家 确保autopass Tng/油/洗好车给下一位司机了 才交换 避免下位司机赶着去载客 没空去打油进autopass那些",
+            "⚠️ 如果只是one way 你抢到这个单了 是acc单的话 你需要询问我看看这个agent或者这个人会不会欠钱才接 不然之后如果收不到钱 这个钱需要对你",
+            "📋 订单 前后最少相隔2.5小时 比如 Jb to sg 5am 只能接7.30am后的sg to jb 远途的话 需要看gps 然后+多2个小时 大日子/看假期需要相隔3个小时 司机已经到了sg你就可以收早一点的",
+            "📤 订单多出来的 拿来换自己需要的时间 普通天通常都是提前一天换就行 换2次 换不到就丢 丢给一些经常有给你订单的人 如果没有的话给第一个就行 大日子 比如说你看到群里1-2个人都在开始丢这个日期或者时间 你就需要提早2-3天丢了 如果是几个小时前的你也要注意 你这个时间还有单就要丢了 优先换你要的订单 然后再丢去群里 先丢微信 再丢whatsapp whatsapp群需要写价格",
+            "📝 订单一定要进去表格 这样我们才知道 需要进2边 我们会核对所有资料",
+            "🆓 拜2/拜3 所有车不开pass freepass后跑 除了学校假期或者放假 只有MBCC我们也没有接\n\nFree Pass就是我们进sg不需要给sgd35\n\n时间是5pm-2am 拜一到拜五 不需要给sgd35\n\n如果2am-5pm之间是需要给一个sgd35的\n\n除非假期 我会跟你说 12pm后freepass 就是12pm-2am之间不需要给sgd35\n\n或者holiday/跟拜6礼拜是全天 不需要给sgd35"
+        ];
+
+        // ============================================================
+        // DOM 引用
+        // ============================================================
+        const driverList = document.getElementById('driverList');
+        const adminList = document.getElementById('adminList');
+        const driverCount = document.getElementById('driverCount');
+        const adminCount = document.getElementById('adminCount');
+        const totalCount = document.getElementById('totalCount');
+        const progressInfo = document.getElementById('progressInfo');
+
+        const tabDriver = document.getElementById('tabDriver');
+        const tabAdmin = document.getElementById('tabAdmin');
+        const driverTab = document.getElementById('driverTab');
+        const adminTab = document.getElementById('adminTab');
+
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+
+        // ============================================================
+        // 辅助函数
+        // ============================================================
+        function updateStats() {
+            const driverTotal = workshopData.length + cashDropData.length + parkingData.length + dailyCheckItems.length + otherImportantItems.length + 1 + 1;
+            const adminTotal = adminSOP.length;
+            const total = driverTotal + adminTotal;
+            driverCount.textContent = driverTotal;
+            adminCount.textContent = adminTotal;
+            totalCount.textContent = `${total} 项`;
+            progressInfo.textContent = `📊 共 ${total} 条规则`;
+        }
+
+        // ============================================================
+        // 司机 SOP 渲染函数
+        // ============================================================
+        function generateWorkshopHTML(ws) {
+            let html = '';
+            html += `<span class="ws-line label"><span class="ws-icon">🔧</span> ${ws.name}</span>`;
+            let phoneDisplay = ws.phoneLabel ? `${ws.phoneLabel} · ` : '';
+            html += `<span class="ws-line phone">📞 ${phoneDisplay}<a href="${ws.phone}" target="_blank">${ws.phone.replace('https://wa.me/', '')}</a></span>`;
+            html += `<span class="ws-line address">📍 <a href="${ws.addressMap}" target="_blank">${ws.address}</a></span>`;
+            if (ws.notes) {
+                html += `<span class="ws-line" style="color:#4f6b81;font-size:0.88rem;">📌 ${ws.notes}</span>`;
+            }
+            return html;
+        }
+
+        function generateCashDropHTML(cd) {
+            let html = '';
+            html += `<span class="ws-line label"><span class="ws-icon">🏠</span> ${cd.name}</span>`;
+            html += `<span class="ws-line address">📍 <a href="${cd.addressMap}" target="_blank">${cd.address}</a></span>`;
+            if (cd.notes) {
+                html += `<span class="ws-line" style="color:#4f6b81;font-size:0.88rem;">📌 ${cd.notes}</span>`;
+            }
+            return html;
+        }
+
+        function generateParkingHTML(p) {
+            let html = '';
+            html += `<span class="ws-line label"><span class="ws-icon">🅿️</span> ${p.name}</span>`;
+            if (p.type === 'free') {
+                html += `<span class="ws-line tag free">🆓 免费停车</span>`;
+            } else if (p.type === 'toilet') {
+                html += `<span class="ws-line tag toilet">🆓 免费停车 + 🚻 附近有厕所</span>`;
+            }
+            html += `<span class="ws-line address">📍 <a href="${p.addressMap}" target="_blank">${p.address}</a></span>`;
+            return html;
+        }
+
+        function generateDailyCheckHTML(item) {
+            return `<span class="ws-line check-item"><span class="check-icon">☑️</span> ${item}</span>`;
+        }
+
+        function generateOtherImportantHTML(item) {
+            return `<span class="ws-line check-item"><span class="check-icon">📌</span> ${item}</span>`;
+        }
+
+        function generateBankHTML() {
+            let html = '';
+            html += `<span class="ws-line label"><span class="ws-icon">🏦</span> 银行：${bankDetails.bank}</span>`;
+            html += `<span class="ws-line">👤 收款人：${bankDetails.beneficiary}</span>`;
+            html += `<span class="ws-line">💳 TNG账号：${bankDetails.account}</span>`;
+            html += `<span class="ws-line">📱 手机号转账：${bankDetails.phoneTransfer}</span>`;
+            html += `<span class="ws-line" style="color:#4f6b81;font-size:0.88rem;">📌 ${bankDetails.note}</span>`;
+
+            html += `<div class="image-grid">`;
+            for (const qr of qrImages) {
+                html += `
+                    <div class="image-item">
+                        <span class="image-label">${qr.label}</span>
+                        <img src="${qr.file}" 
+                             alt="${qr.label} QR Code"
+                             onclick="openModal(this)"
+                             onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2216%22 font-weight=%22bold%22 font-family=%22sans-serif%22%3E${qr.label}%3C/text%3E%3C/svg%3E'" />
+                    </div>
+                `;
+            }
+            html += `</div>`;
+            return html;
+        }
+
+        function generateMDACHTML() {
+            let html = '';
+            for (const line of mdacContent) {
+                const isImportant = line.includes('⚠️');
+                html += `<span class="ws-line ${isImportant ? 'important' : ''}">${line}</span>`;
+            }
+            html += `<div class="image-grid">`;
+            for (let i = 0; i < mdacImages.length; i++) {
+                const imgFile = mdacImages[i];
+                const label = `步骤 ${i+1}`;
+                html += `
+                    <div class="image-item">
+                        <span class="image-label">${label}</span>
+                        <img src="${imgFile}" 
+                             alt="MDAC 步骤 ${i+1}"
+                             onclick="openModal(this)"
+                             onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2216%22 font-weight=%22bold%22 font-family=%22sans-serif%22%3EMDAC ${i+1}%3C/text%3E%3C/svg%3E'" />
+                    </div>
+                `;
+            }
+            html += `</div>`;
+            return html;
+        }
+
+        function createCollapseSection(title, icon, count, items, renderFn) {
+            const section = document.createElement('li');
+            section.className = 'collapse-section';
+            section.style.listStyle = 'none';
+
+            const header = document.createElement('div');
+            header.className = 'collapse-header';
+            header.innerHTML = `
+                <span class="title">${icon} ${title} <span style="font-weight:400;color:#6d8aa8;font-size:0.8rem;">(${count}项)</span></span>
+                <span class="arrow">▼</span>
+            `;
+
+            const body = document.createElement('div');
+            body.className = 'collapse-body';
+
+            for (let i = 0; i < items.length; i++) {
+                const item = document.createElement('div');
+                item.className = 'task-item';
+                const textSpan = document.createElement('span');
+                textSpan.className = 'task-text';
+                textSpan.innerHTML = renderFn(items[i]);
+                item.appendChild(textSpan);
+                body.appendChild(item);
+            }
+
+            header.addEventListener('click', function() {
+                const isOpen = body.classList.toggle('open');
+                header.querySelector('.arrow').classList.toggle('open', isOpen);
+            });
+
+            section.appendChild(header);
+            section.appendChild(body);
+            return section;
+        }
+
+        function createBankSection() {
+            const section = document.createElement('li');
+            section.className = 'collapse-section';
+            section.style.listStyle = 'none';
+
+            const header = document.createElement('div');
+            header.className = 'collapse-header';
+            header.innerHTML = `
+                <span class="title">🏦 公司银行账号 <span style="font-weight:400;color:#6d8aa8;font-size:0.8rem;">(1项)</span></span>
+                <span class="arrow">▼</span>
+            `;
+
+            const body = document.createElement('div');
+            body.className = 'collapse-body';
+
+            const item = document.createElement('div');
+            item.className = 'task-item';
+            const textSpan = document.createElement('span');
+            textSpan.className = 'task-text';
+            textSpan.innerHTML = generateBankHTML();
+            item.appendChild(textSpan);
+            body.appendChild(item);
+
+            header.addEventListener('click', function() {
+                const isOpen = body.classList.toggle('open');
+                header.querySelector('.arrow').classList.toggle('open', isOpen);
+            });
+
+            section.appendChild(header);
+            section.appendChild(body);
+            return section;
+        }
+
+        function createMDACSection() {
+            const section = document.createElement('li');
+            section.className = 'collapse-section';
+            section.style.listStyle = 'none';
+
+            const header = document.createElement('div');
+            header.className = 'collapse-header';
+            header.innerHTML = `
+                <span class="title">🛂 外国人入境须知 <span style="font-weight:400;color:#6d8aa8;font-size:0.8rem;">(1项)</span></span>
+                <span class="arrow">▼</span>
+            `;
+
+            const body = document.createElement('div');
+            body.className = 'collapse-body';
+
+            const item = document.createElement('div');
+            item.className = 'task-item';
+            const textSpan = document.createElement('span');
+            textSpan.className = 'task-text';
+            textSpan.innerHTML = generateMDACHTML();
+            item.appendChild(textSpan);
+            body.appendChild(item);
+
+            header.addEventListener('click', function() {
+                const isOpen = body.classList.toggle('open');
+                header.querySelector('.arrow').classList.toggle('open', isOpen);
+            });
+
+            section.appendChild(header);
+            section.appendChild(body);
+            return section;
+        }
+
+        // ============================================================
+        // 图片放大功能
+        // ============================================================
+        window.openModal = function(imgElement) {
+            const src = imgElement.getAttribute('src');
+            if (src) {
+                modalImg.src = src;
+                modal.classList.add('active');
+            }
+        };
+
+        modal.addEventListener('click', function() {
+            this.classList.remove('active');
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // ============================================================
+        // 渲染司机列表
+        // ============================================================
+        function renderDriverList() {
+            driverList.innerHTML = '';
+
+            const workshopSection = createCollapseSection('修车厂', '🔧', workshopData.length, workshopData, generateWorkshopHTML);
+            driverList.appendChild(workshopSection);
+
+            const cashDropSection = createCollapseSection('现金上交地点', '💰', cashDropData.length, cashDropData, generateCashDropHTML);
+            driverList.appendChild(cashDropSection);
+
+            const parkingSection = createCollapseSection('免费停车地点', '🅿️', parkingData.length, parkingData, generateParkingHTML);
+            driverList.appendChild(parkingSection);
+
+            const checkSection = createCollapseSection('每天汽车检查项目', '✅', dailyCheckItems.length, dailyCheckItems, generateDailyCheckHTML);
+            driverList.appendChild(checkSection);
+
+            const otherSection = createCollapseSection('其他重要事项', '📋', otherImportantItems.length, otherImportantItems, generateOtherImportantHTML);
+            driverList.appendChild(otherSection);
+
+            const bankSection = createBankSection();
+            driverList.appendChild(bankSection);
+
+            const mdacSection = createMDACSection();
+            driverList.appendChild(mdacSection);
+        }
+
+        // ============================================================
+        // 渲染行政列表 (直接显示，无折叠)
+        // ============================================================
+        function renderAdminList() {
+            adminList.innerHTML = '';
+            for (let i = 0; i < adminSOP.length; i++) {
+                const li = document.createElement('li');
+                li.className = 'task-item';
+                const textSpan = document.createElement('span');
+                textSpan.className = 'task-text';
+                // 处理换行：将 \n\n 替换为 <br><br>
+                const formattedText = adminSOP[i].replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
+                textSpan.innerHTML = formattedText;
+                li.appendChild(textSpan);
+                adminList.appendChild(li);
+            }
+        }
+
+        // ============================================================
+        // 渲染
+        // ============================================================
+        function render() {
+            renderDriverList();
+            renderAdminList();
+            updateStats();
+        }
+
+        // ============================================================
+        // Tab 切换
+        // ============================================================
+        function switchTab(tab) {
+            tabDriver.classList.toggle('active', tab === 'driver');
+            tabAdmin.classList.toggle('active', tab === 'admin');
+            driverTab.classList.toggle('hidden', tab !== 'driver');
+            adminTab.classList.toggle('hidden', tab !== 'admin');
+        }
+
+        tabDriver.addEventListener('click', () => switchTab('driver'));
+        tabAdmin.addEventListener('click', () => switchTab('admin'));
+
+        // ============================================================
+        // 初始化
+        // ============================================================
+        render();
+        switchTab('driver');
+
+    })();
+</script>
+</body>
+</html>
