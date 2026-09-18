@@ -114,6 +114,7 @@
             margin-bottom: 1.8rem;
             border-bottom: 2px solid #e2ebf3;
             padding-bottom: 0.1rem;
+            flex-wrap: wrap;
         }
 
         .tab-btn {
@@ -471,6 +472,95 @@
             border-radius: 40px;
         }
 
+        /* ===== 招聘广告样式 ===== */
+        .recruit-card {
+            background: linear-gradient(145deg, #f8fbfe 0%, #eef5fc 100%);
+            border-radius: 24px;
+            padding: 1.6rem 1.8rem;
+            border: 1px solid #dce8f2;
+            box-shadow: 0 4px 16px rgba(0, 20, 40, 0.03);
+            margin-bottom: 0.6rem;
+        }
+
+        .recruit-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a2e3f;
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.3px;
+        }
+
+        .recruit-sub {
+            font-size: 1rem;
+            color: #3a6a8f;
+            font-weight: 600;
+            margin-bottom: 1.4rem;
+        }
+
+        .recruit-block {
+            margin-bottom: 1.4rem;
+        }
+
+        .recruit-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .recruit-block .recruit-line {
+            display: block;
+            font-size: 0.95rem;
+            color: #1c3142;
+            line-height: 1.9;
+            padding: 0.05rem 0;
+        }
+
+        .recruit-divider {
+            border: none;
+            border-top: 1px dashed #c6d8e8;
+            margin: 1.2rem 0;
+        }
+
+        .recruit-wa {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 0.7rem 1.6rem;
+            border-radius: 60px;
+            text-decoration: none;
+            margin-top: 0.4rem;
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.25);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .recruit-wa:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35);
+        }
+
+        .recruit-checklist {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            margin-top: 0.4rem;
+        }
+
+        .recruit-checklist li {
+            font-size: 0.95rem;
+            color: #1c3142;
+            line-height: 1.7;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .recruit-checklist li .tick {
+            color: #28a745;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
         @media (max-width: 600px) {
             .sop-container { padding: 1.5rem 1rem; }
             .sop-header h1 { font-size: 1.5rem; }
@@ -490,6 +580,8 @@
             .image-grid {
                 gap: 0.6rem;
             }
+            .recruit-card { padding: 1.2rem 1rem; }
+            .recruit-title { font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -498,7 +590,7 @@
 <div class="sop-container">
     <div class="sop-header">
         <div class="sop-header-left">
-            <!-- ===== 页面内 Logo (尺寸已加大) ===== -->
+            <!-- ===== 页面内 Logo ===== -->
             <img src="./logo.jpg" alt="公司Logo" class="logo-img" />
             <h1>
                 🚐 旅行社 SOP
@@ -522,6 +614,9 @@
             📋 行政 SOP
             <span class="tab-count" id="adminCount">0</span>
         </button>
+        <button class="tab-btn" data-tab="recruit" id="tabRecruit">
+            📢 招聘广告
+        </button>
     </div>
 
     <div id="driverTab" class="tab-content">
@@ -530,6 +625,78 @@
 
     <div id="adminTab" class="tab-content hidden">
         <ul class="task-list" id="adminList"></ul>
+    </div>
+
+    <div id="recruitTab" class="tab-content hidden">
+        <div class="recruit-card">
+            <div class="recruit-title">🚗 全職霸王車司机 | Full Time Driver 🇲🇾 JB</div>
+            <div class="recruit-sub">工作 20-22 天（可自选非周末休息天 / 天数）</div>
+
+            <div class="recruit-block">
+                <span class="recruit-line">每月薪金️ 高達最少 4000-8000++（工钱越高工作越累）</span>
+                <span class="recruit-line">公司會提供车，不需要用到自己的车 🚗</span>
+            </div>
+
+            <div class="recruit-block">
+                <span class="recruit-line">✔ 包车油</span>
+                <span class="recruit-line">✔ Toll费</span>
+                <span class="recruit-line">✔ 远途住宿</span>
+            </div>
+
+            <hr class="recruit-divider" />
+
+            <div class="recruit-block">
+                <span class="recruit-line">📩 WHATSAPP Or PM 下面</span>
+                <span class="recruit-line">📱 +60108887585</span>
+                <span class="recruit-line">BENSON ☎️</span>
+                <a class="recruit-wa" href="https://wa.me/60108887585" target="_blank">💬 WhatsApp BENSON</a>
+            </div>
+
+            <hr class="recruit-divider" />
+
+            <div class="recruit-block">
+                <span class="recruit-line">⚠️ 仅限住新山区</span>
+                <span class="recruit-line">⚠️ 年龄层 22-38岁</span>
+                <span class="recruit-line">⚠️ 不要 P LESEN</span>
+            </div>
+
+            <hr class="recruit-divider" />
+
+            <div class="recruit-block">
+                <span class="recruit-line">🚗 可以马上开工最好</span>
+            </div>
+
+            <hr class="recruit-divider" />
+
+            <div class="recruit-block">
+                <span class="recruit-line" style="font-weight:600;margin-bottom:0.4rem;">📌 工作条件</span>
+                <ul class="recruit-checklist">
+                    <li><span class="tick">✅</span> 肯学习</li>
+                    <li><span class="tick">✅</span> 守时</li>
+                    <li><span class="tick">✅</span> 勤劳</li>
+                    <li><span class="tick">✅</span> 有礼貌</li>
+                    <li><span class="tick">✅</span> 懂得基本语言沟通</li>
+                    <li><span class="tick">✅</span> 会使用 GPS 导航</li>
+                    <li><span class="tick">✅</span> 拥有 Passport（需要能进新加坡）</li>
+                    <li><span class="tick">✅</span> 熟悉 新马路线为佳</li>
+                    <li><span class="tick">✅</span> 有做过 修车工优先</li>
+                </ul>
+            </div>
+
+            <hr class="recruit-divider" />
+
+            <div class="recruit-block">
+                <span class="recruit-line" style="font-weight:600;margin-bottom:0.4rem;">📍 工作性质</span>
+                <span class="recruit-line">🚗 专业载送服务</span>
+                <span class="recruit-line">🚗 新马 / 本地 旅游（长途 / 短途）</span>
+            </div>
+
+            <hr class="recruit-divider" />
+
+            <div class="recruit-block">
+                <span class="recruit-line">🎊 会有 admin 安排好订单和路线</span>
+            </div>
+        </div>
     </div>
 
     <div class="footer-actions">
@@ -690,7 +857,7 @@
         ];
 
         // ============================================================
-        // 行政 SOP 数据 (10条规则)
+        // 行政 SOP 数据
         // ============================================================
         const adminSOP = [
             "📅 每个拜一 2pm 准时 问全部司机 叫司机拍照镜子上的粘纸全部拍照/meter表拍照 检查司机黑油牙油等等 是不是全部到期了 是的话 给阿杰店的地址 tayar到了给tayar店的地址",
@@ -706,7 +873,7 @@
         ];
 
         // ============================================================
-        // 外国人入境须知 (mdac 小写)
+        // 外国人入境须知
         // ============================================================
         const mdacContent = [
             "⚠️ 请所有人注意以下事项⚠️",
@@ -717,12 +884,12 @@
         ];
 
         const mdacImages = [
-            IMAGE_BASE_PATH + "mdac1.jpg",
-            IMAGE_BASE_PATH + "mdac2.jpg",
-            IMAGE_BASE_PATH + "mdac3.jpg",
-            IMAGE_BASE_PATH + "mdac4.jpg",
-            IMAGE_BASE_PATH + "mdac5.jpg",
-            IMAGE_BASE_PATH + "mdac6.jpg"
+            IMAGE_BASE_PATH + "MDAC1.jpg",
+            IMAGE_BASE_PATH + "MDAC2.jpg",
+            IMAGE_BASE_PATH + "MDAC3.jpg",
+            IMAGE_BASE_PATH + "MDAC4.jpg",
+            IMAGE_BASE_PATH + "MDAC5.jpg",
+            IMAGE_BASE_PATH + "MDAC6.jpg"
         ];
 
         // ============================================================
@@ -754,8 +921,10 @@
 
         const tabDriver = document.getElementById('tabDriver');
         const tabAdmin = document.getElementById('tabAdmin');
+        const tabRecruit = document.getElementById('tabRecruit');
         const driverTab = document.getElementById('driverTab');
         const adminTab = document.getElementById('adminTab');
+        const recruitTab = document.getElementById('recruitTab');
 
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImage');
@@ -1121,12 +1290,15 @@
         function switchTab(tab) {
             tabDriver.classList.toggle('active', tab === 'driver');
             tabAdmin.classList.toggle('active', tab === 'admin');
+            tabRecruit.classList.toggle('active', tab === 'recruit');
             driverTab.classList.toggle('hidden', tab !== 'driver');
             adminTab.classList.toggle('hidden', tab !== 'admin');
+            recruitTab.classList.toggle('hidden', tab !== 'recruit');
         }
 
         tabDriver.addEventListener('click', () => switchTab('driver'));
         tabAdmin.addEventListener('click', () => switchTab('admin'));
+        tabRecruit.addEventListener('click', () => switchTab('recruit'));
 
         // ============================================================
         // 图片放大功能
