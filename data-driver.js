@@ -145,12 +145,12 @@ const mdacContent = [
     "请顾客将图片截图起来，以备保存以防万一他们在通关时面临什么问题。"
 ];
 const mdacImages = [
-    IMAGE_BASE_PATH_MDAC + "MDAC1.jpg",
-    IMAGE_BASE_PATH_MDAC + "MDAC2.jpg",
-    IMAGE_BASE_PATH_MDAC + "MDAC3.jpg",
-    IMAGE_BASE_PATH_MDAC + "MDAC4.jpg",
-    IMAGE_BASE_PATH_MDAC + "MDAC5.jpg",
-    IMAGE_BASE_PATH_MDAC + "MDAC6.jpg"
+    IMAGE_BASE_PATH_MDAC + "mdac1.jpg",
+    IMAGE_BASE_PATH_MDAC + "mdac2.jpg",
+    IMAGE_BASE_PATH_MDAC + "mdac3.jpg",
+    IMAGE_BASE_PATH_MDAC + "mdac4.jpg",
+    IMAGE_BASE_PATH_MDAC + "mdac5.jpg",
+    IMAGE_BASE_PATH_MDAC + "mdac6.jpg"
 ];
 
 // ---------- 公司银行账号 ----------
