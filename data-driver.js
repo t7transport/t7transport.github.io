@@ -2,6 +2,8 @@
 // 司机 SOP 数据
 // ============================================================
 const IMAGE_BASE_PATH = '';
+const IMAGE_BASE_PATH_CAR = 'img/car/';
+const VIDEO_BASE_PATH_MOUNTAIN = 'video/mountain/';
 
 // ---------- 修车厂 ----------
 const workshopData = [
@@ -167,37 +169,37 @@ const qrImages = [
 // ============================================================
 // 我们的车辆
 // ============================================================
-const carData = [
+	const carData = [	
     {
         plate: "W1608Y",
         images: [
-            { file: IMAGE_BASE_PATH + "1608.jpeg", label: "W1608Y" }
+            { file: IMAGE_BASE_PATH_CAR + "1608.jpeg", label: "W1608Y" }
         ]
     },
     {
         plate: "QM1677F",
         images: [
-            { file: IMAGE_BASE_PATH + "1677.jpeg", label: "QM1677F" }
+            { file: IMAGE_BASE_PATH_CAR + "1677.jpeg", label: "QM1677F" }
         ]
     },
     {
         plate: "JUU4339",
         images: [
-            { file: IMAGE_BASE_PATH + "4339.jpeg", label: "JUU4339" }
+            { file: IMAGE_BASE_PATH_CAR + "4339.jpeg", label: "JUU4339" }
         ]
     },
     {
         plate: "FD2188",
         images: [
-            { file: IMAGE_BASE_PATH + "2188.jpeg",     label: "FD2188" },
-            { file: IMAGE_BASE_PATH + "2188side.jpeg", label: "FD2188 侧面" }
+            { file: IMAGE_BASE_PATH_CAR + "2188.jpeg",     label: "FD2188" },
+            { file: IMAGE_BASE_PATH_CAR + "2188side.jpeg", label: "FD2188 侧面" }
         ]
     },
     {
         plate: "QDB58",
         images: [
-            { file: IMAGE_BASE_PATH + "58.jpeg",     label: "QDB58" },
-            { file: IMAGE_BASE_PATH + "58side.jpeg", label: "QDB58 侧面" }
+            { file: IMAGE_BASE_PATH_CAR + "58.jpeg",     label: "QDB58" },
+            { file: IMAGE_BASE_PATH_CAR + "58side.jpeg", label: "QDB58 侧面" }
         ]
     }
 ];
@@ -209,12 +211,12 @@ const mountainVideoData = [
     {
         title: "⛰️ 上山教学",
         desc: "上山时的正确驾驶方式与注意事项",
-        file: IMAGE_BASE_PATH + "upmountain.mp4"
+        file: VIDEO_BASE_PATH_MOUNTAIN + "upmountain.mp4"
     },
     {
         title: "⬇️ 下山教学",
         desc: "下山时的正确驾驶方式与注意事项",
-        file: IMAGE_BASE_PATH + "downmoutain.mp4"
+        file: VIDEO_BASE_PATH_MOUNTAIN + "downmoutain.mp4"
     }
 ];
 
