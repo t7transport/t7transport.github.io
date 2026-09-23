@@ -1,7 +1,7 @@
 // ============================================================
 // 司机 SOP 数据
 // ============================================================
-const IMAGE_BASE_PATH = '';
+const IMAGE_BASE_PATH = ''; 
 const IMAGE_BASE_PATH_CAR = 'img/car/';
 const IMAGE_BASE_PATH_MDAC = 'img/mdac/';
 const VIDEO_BASE_PATH_MOUNTAIN = 'video/mountain/';
