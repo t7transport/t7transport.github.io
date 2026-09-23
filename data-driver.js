@@ -3,6 +3,7 @@
 // ============================================================
 const IMAGE_BASE_PATH = '';
 const IMAGE_BASE_PATH_CAR = 'img/car/';
+const IMAGE_BASE_PATH_MDAC = 'img/mdac/';
 const VIDEO_BASE_PATH_MOUNTAIN = 'video/mountain/';
 
 // ---------- 修车厂 ----------
@@ -144,12 +145,12 @@ const mdacContent = [
     "请顾客将图片截图起来，以备保存以防万一他们在通关时面临什么问题。"
 ];
 const mdacImages = [
-    IMAGE_BASE_PATH + "MDAC1.jpg",
-    IMAGE_BASE_PATH + "MDAC2.jpg",
-    IMAGE_BASE_PATH + "MDAC3.jpg",
-    IMAGE_BASE_PATH + "MDAC4.jpg",
-    IMAGE_BASE_PATH + "MDAC5.jpg",
-    IMAGE_BASE_PATH + "MDAC6.jpg"
+    IMAGE_BASE_PATH_MDAC + "MDAC1.jpg",
+    IMAGE_BASE_PATH_MDAC + "MDAC2.jpg",
+    IMAGE_BASE_PATH_MDAC + "MDAC3.jpg",
+    IMAGE_BASE_PATH_MDAC + "MDAC4.jpg",
+    IMAGE_BASE_PATH_MDAC + "MDAC5.jpg",
+    IMAGE_BASE_PATH_MDAC + "MDAC6.jpg"
 ];
 
 // ---------- 公司银行账号 ----------
