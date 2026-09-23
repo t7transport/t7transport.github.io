@@ -5,6 +5,9 @@ const IMAGE_BASE_PATH = '';
 const IMAGE_BASE_PATH_CAR = 'img/car/';
 const IMAGE_BASE_PATH_MDAC = 'img/mdac/';
 const VIDEO_BASE_PATH_MOUNTAIN = 'video/mountain/';
+const VIDEO_BASE_PATH_WORKSHOP = 'video/workshop/';
+const VIDEO_BASE_PATH_INTRO = 'video/alphard_intro/';
+
 
 // ---------- 修车厂 ----------
 const workshopData = [
@@ -228,7 +231,7 @@ const ahJieVideoData = [
     {
         title: "🔑 阿杰修车厂 – 交钥匙教学",
         desc: "把车停在修车厂后，如果修车厂还没开门，如何把钥匙交给师傅",
-        file: IMAGE_BASE_PATH + "workshoppasskey.mp4"
+        file: VIDEO_BASE_PATH_WORKSHOP + "workshoppasskey.mp4"
     }
 ];
 
@@ -239,46 +242,46 @@ const alphardVideoData = [
     {
         title: "🚐 Alphard 基本功能",
         desc: "Alphard 基本功能介绍",
-        file: IMAGE_BASE_PATH + "howtoalphard.mp4"
+        file: VIDEO_BASE_PATH_INTRO + "howtoalphard.mp4"
     },
     {
         title: "🚪 Alphard 自动门按钮",
         desc: "自动门按钮的位置与使用方法",
-        file: IMAGE_BASE_PATH + "autoshut.mp4"
+        file: VIDEO_BASE_PATH_INTRO + "autoshut.mp4"
     },
     {
         title: "⛽ Alphard 引擎盖和加油盖按钮",
         desc: "引擎盖与加油盖开关的位置",
-        file: IMAGE_BASE_PATH + "bonet&fuel.mp4"
+        file: VIDEO_BASE_PATH_INTRO + "bonet&fuel.mp4"
     },
     {
         title: "💺 Alphard 副驾座位调整",
         desc: "副驾驶座位的调整方式",
-        file: IMAGE_BASE_PATH + "adjustseat.mp4"
+        file: VIDEO_BASE_PATH_INTRO + "adjustseat.mp4"
     },
     {
         title: "💺 Alphard 后座座位调整",
         desc: "后座座位的调整方式",
-        file: IMAGE_BASE_PATH + "middleseat.mp4"
+        file: VIDEO_BASE_PATH_INTRO + "middleseat.mp4"
     },
     {
         title: "🍽️ Alphard 后座收纳小桌子",
         desc: "后座隐藏小桌子的展开与收纳",
-        file: IMAGE_BASE_PATH + "middletable.mp4"
+        file: VIDEO_BASE_PATH_INTRO + "middletable.mp4"
     },
     {
         title: "🎛️ Alphard 后座操控按钮",
         desc: "后座控制面板的功能介绍",
-        file: IMAGE_BASE_PATH + "rearadjust.mp4"
+        file: VIDEO_BASE_PATH_INTRO + "rearadjust.mp4"
     },
     {
         title: "🧳 Alphard 后备仓操作 1",
         desc: "后备仓基本操作演示 1",
-        file: IMAGE_BASE_PATH + "luggage1.mp4"
+        file: VIDEO_BASE_PATH_INTRO + "luggage1.mp4"
     },
     {
         title: "🧳 Alphard 后备仓操作 2",
         desc: "后备仓基本操作演示 2",
-        file: IMAGE_BASE_PATH + "luggage2.mp4"
+        file: VIDEO_BASE_PATH_INTRO + "luggage2.mp4"
     }
 ];
