@@ -1,9 +1,13 @@
 // ============================================================
 // 司机 SOP 数据
 // ============================================================
-const IMAGE_BASE_PATH = ''; 
+const IMAGE_BASE_PATH = '';
 const IMAGE_BASE_PATH_CAR = 'img/car/';
 const IMAGE_BASE_PATH_MDAC = 'img/mdac/';
+const IMAGE_BASE_PATH_CUSTOM = 'img/SG_custom/';
+const IMAGE_BASE_PATH_BANK = 'img/bank/';
+const IMAGE_BASE_PATH_WEIXIN = 'img/weixin/';
+const IMAGE_BASE_PATH_SENTOSA = 'img/sentosa/';
 const VIDEO_BASE_PATH_MOUNTAIN = 'video/mountain/';
 const VIDEO_BASE_PATH_WORKSHOP = 'video/workshop/';
 const VIDEO_BASE_PATH_INTRO = 'video/alphard_intro/';
@@ -111,8 +115,8 @@ const wechatItems = [
     "📌 不然的话 像他们这样写就行了"
 ];
 const wechatImages = [
-    { file: IMAGE_BASE_PATH + "weixin1.jpg", label: "微信示例 1" },
-    { file: IMAGE_BASE_PATH + "weixin2.jpg", label: "微信示例 2" }
+    { file: IMAGE_BASE_PATH_WEIXIN + "weixin1.jpg", label: "微信示例 1" },
+    { file: IMAGE_BASE_PATH_WEIXIN + "weixin2.jpg", label: "微信示例 2" }
 ];
 
 // ---------- Sentosa ----------
@@ -121,8 +125,8 @@ const sentosaItems = [
     "💰 很贵Autopass每次要SGD6好像，所以尽量跟顾客拿上面的照片其中一个东西"
 ];
 const sentosaImages = [
-    { file: IMAGE_BASE_PATH + "sentosa1.jpg", label: "Sentosa 示例 1" },
-    { file: IMAGE_BASE_PATH + "sentosa2.jpg", label: "Sentosa 示例 2" }
+    { file: IMAGE_BASE_PATH_SENTOSA + "sentosa1.jpg", label: "Sentosa 示例 1" },
+    { file: IMAGE_BASE_PATH_SENTOSA + "sentosa2.jpg", label: "Sentosa 示例 2" }
 ];
 
 // ---------- 新加坡海关 ----------
@@ -132,11 +136,11 @@ const customsItems = [
     "✅ 走到这个镜子里面就是autopass office了"
 ];
 const customsImages = [
-    { file: IMAGE_BASE_PATH + "check1.jpg", label: "SG Office" },
-    { file: IMAGE_BASE_PATH + "custom1.jpg", label: "Custom 1" },
-    { file: IMAGE_BASE_PATH + "custom2.jpg", label: "Custom 2" },
-    { file: IMAGE_BASE_PATH + "custom3.jpg", label: "Custom 3" },
-    { file: IMAGE_BASE_PATH + "office.jpg", label: "Autopass Office" }
+    { file: IMAGE_BASE_PATH_CUSTOM + "check1.jpg", label: "SG Office" },
+    { file: IMAGE_BASE_PATH_CUSTOM + "custom1.jpg", label: "Custom 1" },
+    { file: IMAGE_BASE_PATH_CUSTOM + "custom2.jpg", label: "Custom 2" },
+    { file: IMAGE_BASE_PATH_CUSTOM + "custom3.jpg", label: "Custom 3" },
+    { file: IMAGE_BASE_PATH_CUSTOM + "office.jpg", label: "Autopass Office" }
 ];
 
 // ---------- 外国人入境须知 ----------
@@ -165,9 +169,9 @@ const bankDetails = {
     note: "记得截图单据发给我们哦🧾"
 };
 const qrImages = [
-    { file: IMAGE_BASE_PATH + "duitnow.jpg", label: "DuitNow" },
-    { file: IMAGE_BASE_PATH + "tng.jpg", label: "Touch N Go" },
-    { file: IMAGE_BASE_PATH + "zhifubao.jpg", label: "支付宝" }
+    { file: IMAGE_BASE_PATH_BANK + "duitnow.jpg", label: "DuitNow" },
+    { file: IMAGE_BASE_PATH_BANK + "tng.jpg", label: "Touch N Go" },
+    { file: IMAGE_BASE_PATH_BANK + "zhifubao.jpg", label: "支付宝" }
 ];
 
 // ============================================================
@@ -283,5 +287,10 @@ const alphardVideoData = [
         title: "🧳 Alphard 后备仓操作 2",
         desc: "后备仓基本操作演示 2",
         file: VIDEO_BASE_PATH_INTRO + "luggage2.mp4"
+    },
+	{
+        title: "🧳 Alphard 后备仓操作 3",
+        desc: "后备仓基本操作演示 3",
+        file: VIDEO_BASE_PATH_INTRO + "luggage3.mp4"
     }
 ];
