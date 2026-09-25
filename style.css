@@ -82,13 +82,12 @@ body {
 }
 
 .badge-count {
-    background: #1a2e3f;
+    background: #3a6a8f;
     color: white;
     font-size: 0.95rem;
     font-weight: 500;
     padding: 0.2rem 1.4rem;
     border-radius: 60px;
-    background: #3a6a8f;
     white-space: nowrap;
 }
 
@@ -111,55 +110,63 @@ body {
 .sop-intro span { opacity: 0.6; }
 
 /* ============================================================
-   Tab 栏
+   Tab 栏（桌面端 + 手机端统一优化）
 ============================================================ */
 .tab-bar {
     display: flex;
-    gap: 0.2rem;
+    gap: 0.4rem;
     margin-bottom: 1.8rem;
-    border-bottom: 2px solid #e2ebf3;
     padding-bottom: 0.1rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .tab-btn {
-    padding: 0.7rem 2.2rem;
-    font-size: 1.05rem;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
     font-weight: 600;
-    border: none;
-    background: transparent;
+    border: 1.5px solid #e2ebf3;
+    background: #f8fbfe;
     color: #6d8aa8;
     cursor: pointer;
-    border-radius: 40px 40px 0 0;
-    transition: all 0.15s;
+    border-radius: 16px;
+    transition: all 0.18s ease;
+    letter-spacing: 0.2px;
     position: relative;
-    letter-spacing: 0.3px;
+    white-space: nowrap;
+    font-family: inherit;
 }
 
 .tab-btn:hover {
     background: #eaf1f8;
     color: #1a2e3f;
+    border-color: #c6d8e8;
 }
 
 .tab-btn.active {
-    color: #1a2e3f;
-    background: #eaf1f8;
-    box-shadow: inset 0 -3px 0 #3f8ab3;
+    color: #ffffff;
+    background: linear-gradient(145deg, #3f8ab3 0%, #2c6a92 100%);
+    border-color: #2c6a92;
+    box-shadow: 0 6px 16px rgba(63, 138, 179, 0.35);
 }
 
 .tab-btn .tab-count {
     background: #c6d8e8;
     color: #1f405b;
     font-size: 0.7rem;
-    padding: 0.05rem 0.7rem;
+    padding: 0.05rem 0.6rem;
     border-radius: 40px;
-    margin-left: 0.4rem;
-    font-weight: 500;
+    font-weight: 600;
+    line-height: 1.4;
 }
 
 .tab-btn.active .tab-count {
-    background: #3f8ab3;
-    color: white;
+    background: rgba(255, 255, 255, 0.28);
+    color: #ffffff;
 }
 
 /* ============================================================
@@ -429,6 +436,39 @@ body {
 }
 
 /* ============================================================
+   影片样式
+============================================================ */
+.video-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    width: 100%;
+    margin-top: 0.4rem;
+}
+
+.video-item .video-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1a2e3f;
+}
+
+.video-item .video-desc {
+    font-size: 0.85rem;
+    color: #4f6b81;
+    margin-bottom: 0.3rem;
+}
+
+.video-item video {
+    width: 100%;
+    max-width: 640px;
+    border-radius: 16px;
+    border: 2px solid #e2ebf3;
+    background: #000;
+    box-shadow: 0 4px 14px rgba(0, 20, 40, 0.06);
+}
+
+/* ============================================================
    图片放大模态框
 ============================================================ */
 .modal-overlay {
@@ -496,7 +536,7 @@ body {
 }
 
 /* ============================================================
-   招聘广告样式
+   招聘广告
 ============================================================ */
 .recruit-card {
     background: linear-gradient(145deg, #f8fbfe 0%, #eef5fc 100%);
@@ -587,60 +627,201 @@ body {
 }
 
 /* ============================================================
-   影片样式
-============================================================ */
-.video-item {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.4rem;
-    width: 100%;
-    margin-top: 0.4rem;
-}
-
-.video-item .video-title {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #1a2e3f;
-}
-
-.video-item .video-desc {
-    font-size: 0.85rem;
-    color: #4f6b81;
-    margin-bottom: 0.3rem;
-}
-
-.video-item video {
-    width: 100%;
-    max-width: 640px;
-    border-radius: 16px;
-    border: 2px solid #e2ebf3;
-    background: #000;
-    box-shadow: 0 4px 14px rgba(0, 20, 40, 0.06);
-}
-
-/* ============================================================
-   响应式
+   手机版（≤ 600px）
 ============================================================ */
 @media (max-width: 600px) {
-    .sop-container { padding: 1.5rem 1rem; }
-    .sop-header h1 { font-size: 1.5rem; }
-    .sop-header-left .logo-img { width: 60px; height: 60px; }
-    .tab-btn { padding: 0.5rem 1.2rem; font-size: 0.95rem; }
-    .task-item { padding: 0.7rem 1.2rem; }
-    .collapse-header { padding: 0.6rem 1.2rem; }
-    .collapse-body .task-item { margin: 0.2rem 0.3rem; padding: 0.6rem 1rem; }
+
+    /* ---------- 主容器 ---------- */
+    .sop-container {
+        border-radius: 26px;
+        padding: 1.4rem 1rem 1.8rem;
+    }
+
+    /* ---------- 头部 ---------- */
+    .sop-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+        margin-bottom: 1.3rem;
+        padding-bottom: 0.9rem;
+    }
+
+    .sop-header-left {
+        width: 100%;
+        gap: 0.7rem;
+    }
+
+    .sop-header-left .logo-img {
+        width: 54px;
+        height: 54px;
+        border-radius: 12px;
+        padding: 4px;
+    }
+
+    .sop-header h1 {
+        font-size: 1.3rem;
+        line-height: 1.25;
+        gap: 0.3rem;
+        flex-wrap: wrap;
+    }
+
+    .sop-header h1 small {
+        font-size: 0.75rem;
+        padding: 0.1rem 0.7rem;
+        margin-left: 0;
+    }
+
+    .badge-count {
+        font-size: 0.8rem;
+        padding: 0.15rem 1rem;
+        align-self: flex-start;
+    }
+
+    /* ---------- 说明条 ---------- */
+    .sop-intro {
+        font-size: 0.82rem;
+        padding: 0.5rem 1rem;
+        border-radius: 14px;
+        margin-bottom: 1.2rem;
+        gap: 0.5rem;
+    }
+
+    /* ---------- Tab 按钮（手机版重点） ---------- */
+    .tab-bar {
+        gap: 0.35rem;
+        margin-bottom: 1.4rem;
+    }
+
+    .tab-btn {
+        flex: 1;
+        flex-direction: column;   /* 图标在上，文字在下 */
+        gap: 0.15rem;
+        padding: 0.6rem 0.3rem;
+        font-size: 0.8rem;
+        border-radius: 14px;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.25;
+    }
+
+    .tab-btn .tab-count {
+        font-size: 0.62rem;
+        padding: 0 0.5rem;
+        margin-left: 0;
+    }
+
+    /* ---------- 任务卡片 ---------- */
+    .task-item {
+        padding: 0.7rem 1.1rem;
+        border-radius: 40px;
+    }
+
+    .task-text {
+        font-size: 0.9rem;
+    }
+
+    /* ---------- 折叠栏 ---------- */
+    .collapse-header {
+        padding: 0.75rem 1.1rem;
+        border-radius: 16px;
+    }
+
+    .collapse-header .title {
+        font-size: 0.92rem;
+    }
+
+    .collapse-header .arrow {
+        font-size: 1rem;
+    }
+
+    .collapse-body .task-item {
+        margin: 0.2rem 0.3rem;
+        padding: 0.6rem 1rem;
+        border-radius: 30px;
+    }
+
+    .collapse-body .task-item .task-text {
+        font-size: 0.88rem;
+    }
+
     .collapse-body .task-item .task-text .ws-line a {
         padding: 0.05rem 0.5rem;
-        font-size: 0.85rem;
+        font-size: 0.82rem;
     }
-    .image-item img {
-        width: 90px;
-        height: 90px;
-    }
+
+    /* ---------- 图片网格 ---------- */
     .image-grid {
         gap: 0.6rem;
     }
-    .recruit-card { padding: 1.2rem 1rem; }
-    .recruit-title { font-size: 1.2rem; }
+
+    .image-item img {
+        width: 88px;
+        height: 88px;
+        border-radius: 12px;
+        padding: 4px;
+    }
+
+    .image-item .image-label {
+        font-size: 0.65rem;
+        padding: 0.05rem 0.6rem;
+    }
+
+    /* ---------- 影片 ---------- */
+    .video-item video {
+        border-radius: 12px;
+    }
+
+    .video-item .video-title {
+        font-size: 0.9rem;
+    }
+
+    .video-item .video-desc {
+        font-size: 0.8rem;
+    }
+
+    /* ---------- 招聘广告 ---------- */
+    .recruit-card {
+        padding: 1.2rem 1rem;
+        border-radius: 18px;
+    }
+
+    .recruit-title {
+        font-size: 1.15rem;
+        line-height: 1.35;
+    }
+
+    .recruit-sub {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .recruit-block {
+        margin-bottom: 1rem;
+    }
+
+    .recruit-block .recruit-line {
+        font-size: 0.88rem;
+        line-height: 1.75;
+    }
+
+    .recruit-checklist li {
+        font-size: 0.88rem;
+    }
+
+    .recruit-wa {
+        font-size: 0.95rem;
+        padding: 0.6rem 1.3rem;
+    }
+
+    /* ---------- 底部 ---------- */
+    .footer-actions {
+        justify-content: center;
+        margin-top: 1.4rem;
+        padding-top: 1rem;
+    }
+
+    .footer-actions .info {
+        font-size: 0.8rem;
+        padding: 0.1rem 1.2rem;
+    }
 }

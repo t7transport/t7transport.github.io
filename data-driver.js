@@ -1,19 +1,25 @@
 // ============================================================
 // 司机 SOP 数据
 // ============================================================
-const IMAGE_BASE_PATH = '';
-const IMAGE_BASE_PATH_CAR = 'img/car/';
-const IMAGE_BASE_PATH_MDAC = 'img/mdac/';
-const IMAGE_BASE_PATH_CUSTOM = 'img/SG_custom/';
-const IMAGE_BASE_PATH_BANK = 'img/bank/';
-const IMAGE_BASE_PATH_WEIXIN = 'img/weixin/';
-const IMAGE_BASE_PATH_SENTOSA = 'img/sentosa/';
-const VIDEO_BASE_PATH_MOUNTAIN = 'video/mountain/';
-const VIDEO_BASE_PATH_WORKSHOP = 'video/workshop/';
-const VIDEO_BASE_PATH_INTRO = 'video/alphard_intro/';
+
+// ---------- 图片路径 ----------
+const IMAGE_BASE_PATH         = '';                 // 根目录（保留，兼容旧资料）
+const IMAGE_BASE_PATH_CAR     = 'img/car/';         // 车辆照片
+const IMAGE_BASE_PATH_MDAC    = 'img/mdac/';        // MDAC 步骤图
+const IMAGE_BASE_PATH_CUSTOM  = 'img/SG_custom/';   // 新加坡海关图
+const IMAGE_BASE_PATH_BANK    = 'img/bank/';        // 银行 QR
+const IMAGE_BASE_PATH_WEIXIN  = 'img/weixin/';      // 微信客户图
+const IMAGE_BASE_PATH_SENTOSA = 'img/sentosa/';     // Sentosa 图
+
+// ---------- 影片路径 ----------
+const VIDEO_BASE_PATH_MOUNTAIN = 'video/mountain/';       // 山路教学
+const VIDEO_BASE_PATH_WORKSHOP = 'video/workshop/';       // 修车厂教学
+const VIDEO_BASE_PATH_INTRO    = 'video/alphard_intro/';  // Alphard 教学
 
 
-// ---------- 修车厂 ----------
+// ============================================================
+// 修车厂
+// ============================================================
 const workshopData = [
     {
         name: "Workshop 1",
@@ -41,7 +47,10 @@ const workshopData = [
     }
 ];
 
-// ---------- 现金上交地点 ----------
+
+// ============================================================
+// 现金上交地点
+// ============================================================
 const cashDropData = [
     {
         name: "Austin 家",
@@ -63,20 +72,26 @@ const cashDropData = [
     }
 ];
 
-// ---------- 免费停车地点 ----------
+
+// ============================================================
+// 免费停车地点
+// ============================================================
 const parkingData = [
-    { name: "Woodland", address: "Half Price Holdings, 5A Woodlands Centre Rd, Singapore 731005", addressMap: "https://www.google.com/maps/search/?api=1&query=Half+Price+Holdings+5A+Woodlands+Centre+Rd+Singapore", type: "free" },
-    { name: "Changi", address: "Changi North Cres, Singapore 49", addressMap: "https://www.google.com/maps/search/?api=1&query=Changi+North+Cres+Singapore", type: "free" },
-    { name: "Changi", address: "CHARGE+, 60 Tampines North Dr 2, Singapore 528764", addressMap: "https://www.google.com/maps/search/?api=1&query=60+Tampines+North+Dr+2+Singapore", type: "free" },
-    { name: "Jurong Area", address: "Pusara Aman Mosque", addressMap: "https://www.google.com/maps/search/?api=1&query=Pusara+Aman+Mosque+Singapore", type: "toilet" },
-    { name: "Jurong Area", address: "SELETAR CLUB ROAD", addressMap: "https://www.google.com/maps/search/?api=1&query=Seletar+Club+Road+Singapore", type: "toilet" },
-    { name: "Jurong Area", address: "EDWARDS LIFESCIENCES", addressMap: "https://www.google.com/maps/search/?api=1&query=Edwards+Lifesciences+Singapore", type: "toilet" },
-    { name: "Jurong Area", address: "GIANT HYPERMART TAMPINES", addressMap: "https://www.google.com/maps/search/?api=1&query=Giant+Hypermart+Tampines+Singapore", type: "toilet" },
-    { name: "Jurong Area", address: "EAST COAST PARK", addressMap: "https://www.google.com/maps/search/?api=1&query=East+Coast+Park+Singapore", type: "toilet" },
-    { name: "Jurong Area", address: "KENT RIDGE PARK", addressMap: "https://www.google.com/maps/search/?api=1&query=Kent+Ridge+Park+Singapore", type: "toilet" }
+    { name: "Woodland",    address: "Half Price Holdings, 5A Woodlands Centre Rd, Singapore 731005", addressMap: "https://www.google.com/maps/search/?api=1&query=Half+Price+Holdings+5A+Woodlands+Centre+Rd+Singapore", type: "free" },
+    { name: "Changi",      address: "Changi North Cres, Singapore 49",                                  addressMap: "https://www.google.com/maps/search/?api=1&query=Changi+North+Cres+Singapore", type: "free" },
+    { name: "Changi",      address: "CHARGE+, 60 Tampines North Dr 2, Singapore 528764",               addressMap: "https://www.google.com/maps/search/?api=1&query=60+Tampines+North+Dr+2+Singapore", type: "free" },
+    { name: "Jurong Area", address: "Pusara Aman Mosque",                                              addressMap: "https://www.google.com/maps/search/?api=1&query=Pusara+Aman+Mosque+Singapore", type: "toilet" },
+    { name: "Jurong Area", address: "SELETAR CLUB ROAD",                                               addressMap: "https://www.google.com/maps/search/?api=1&query=Seletar+Club+Road+Singapore", type: "toilet" },
+    { name: "Jurong Area", address: "EDWARDS LIFESCIENCES",                                            addressMap: "https://www.google.com/maps/search/?api=1&query=Edwards+Lifesciences+Singapore", type: "toilet" },
+    { name: "Jurong Area", address: "GIANT HYPERMART TAMPINES",                                        addressMap: "https://www.google.com/maps/search/?api=1&query=Giant+Hypermart+Tampines+Singapore", type: "toilet" },
+    { name: "Jurong Area", address: "EAST COAST PARK",                                                 addressMap: "https://www.google.com/maps/search/?api=1&query=East+Coast+Park+Singapore", type: "toilet" },
+    { name: "Jurong Area", address: "KENT RIDGE PARK",                                                 addressMap: "https://www.google.com/maps/search/?api=1&query=Kent+Ridge+Park+Singapore", type: "toilet" }
 ];
 
-// ---------- 每天汽车检查项目 ----------
+
+// ============================================================
+// 每天汽车检查项目
+// ============================================================
 const dailyCheckItems = [
     "🌡️ 等车温度热了才走",
     "💧 检查 Tangki 水，记得每天加",
@@ -95,7 +110,10 @@ const dailyCheckItems = [
     "📵 载的顾客不要跟顾客拿号码，也不要给顾客我的号码"
 ];
 
-// ---------- 其他重要事项 ----------
+
+// ============================================================
+// 其他重要事项
+// ============================================================
 const otherImportantItems = [
     "⛽ 如果车剩下半桶油，出来后就要马上在JB打油了才进去。如果你在SG打油，打SGD10只能Claim RM10（尽量不要载着顾客去打油，打好油才去接客）",
     "📸 拿车的时候，录一圈车视频跟只需要拍哪里有伤就可以了，没拍到的刚好伤到会直接Claim上一个司机❗️",
@@ -108,7 +126,10 @@ const otherImportantItems = [
     "🛂 遇到JPJ Tuas报Kota Tinggi，可以打电话 <a href='https://wa.me/601137135219' target='_blank'>011-3713 5219</a> 跟他说你的车牌"
 ];
 
-// ---------- 微信客户 ----------
+
+// ============================================================
+// 微信客户
+// ============================================================
 const wechatItems = [
     "💬 如果你们有接到中国客 在微信群里 该怎么做",
     "📌 不需要写然后东西 除非有突发状况",
@@ -119,7 +140,10 @@ const wechatImages = [
     { file: IMAGE_BASE_PATH_WEIXIN + "weixin2.jpg", label: "微信示例 2" }
 ];
 
-// ---------- Sentosa ----------
+
+// ============================================================
+// Sentosa Resort 注意事项
+// ============================================================
 const sentosaItems = [
     "🏝️ 如果你们进岛SG Sentosa接客，你们会经过类似Toll的地方，跟顾客要求拿酒店信息或者照片里面这样的Code就不要用Autopass卡付费",
     "💰 很贵Autopass每次要SGD6好像，所以尽量跟顾客拿上面的照片其中一个东西"
@@ -129,21 +153,27 @@ const sentosaImages = [
     { file: IMAGE_BASE_PATH_SENTOSA + "sentosa2.jpg", label: "Sentosa 示例 2" }
 ];
 
-// ---------- 新加坡海关 ----------
+
+// ============================================================
+// 新加坡海关注意事项
+// ============================================================
 const customsItems = [
     "🛃 SG OFFICE 如果来到这里 代表顾客护照有问题 或者你的车将被检查",
     "🚫 如果你的autopass卡显示error或者路税到期了需要renew 需要过来这里",
     "✅ 走到这个镜子里面就是autopass office了"
 ];
 const customsImages = [
-    { file: IMAGE_BASE_PATH_CUSTOM + "check1.jpg", label: "SG Office" },
+    { file: IMAGE_BASE_PATH_CUSTOM + "check1.jpg",  label: "SG Office" },
     { file: IMAGE_BASE_PATH_CUSTOM + "custom1.jpg", label: "Custom 1" },
     { file: IMAGE_BASE_PATH_CUSTOM + "custom2.jpg", label: "Custom 2" },
     { file: IMAGE_BASE_PATH_CUSTOM + "custom3.jpg", label: "Custom 3" },
-    { file: IMAGE_BASE_PATH_CUSTOM + "office.jpg", label: "Autopass Office" }
+    { file: IMAGE_BASE_PATH_CUSTOM + "office.jpg",  label: "Autopass Office" }
 ];
 
-// ---------- 外国人入境须知 ----------
+
+// ============================================================
+// 外国人入境须知 (MDAC)
+// ============================================================
 const mdacContent = [
     "⚠️ 请所有人注意以下事项⚠️",
     "凡事所有不是马来西亚人要入境马来西亚者，从12月7日开始必须填写入境白卡。",
@@ -160,7 +190,10 @@ const mdacImages = [
     IMAGE_BASE_PATH_MDAC + "mdac6.jpg"
 ];
 
-// ---------- 公司银行账号 ----------
+
+// ============================================================
+// 公司银行账号
+// ============================================================
 const bankDetails = {
     bank: "Touch N Go",
     beneficiary: "TEO GUAN KOK",
@@ -169,15 +202,16 @@ const bankDetails = {
     note: "记得截图单据发给我们哦🧾"
 };
 const qrImages = [
-    { file: IMAGE_BASE_PATH_BANK + "duitnow.jpg", label: "DuitNow" },
-    { file: IMAGE_BASE_PATH_BANK + "tng.jpg", label: "Touch N Go" },
+    { file: IMAGE_BASE_PATH_BANK + "duitnow.jpg",  label: "DuitNow" },
+    { file: IMAGE_BASE_PATH_BANK + "tng.jpg",      label: "Touch N Go" },
     { file: IMAGE_BASE_PATH_BANK + "zhifubao.jpg", label: "支付宝" }
 ];
+
 
 // ============================================================
 // 我们的车辆
 // ============================================================
-	const carData = [	
+const carData = [
     {
         plate: "W1608Y",
         images: [
@@ -212,6 +246,7 @@ const qrImages = [
     }
 ];
 
+
 // ============================================================
 // 山路驾驶教学
 // ============================================================
@@ -224,9 +259,10 @@ const mountainVideoData = [
     {
         title: "⬇️ 下山教学",
         desc: "下山时的正确驾驶方式与注意事项",
-        file: VIDEO_BASE_PATH_MOUNTAIN + "downmoutain.mp4"
+        file: VIDEO_BASE_PATH_MOUNTAIN + "downmountain.mp4"
     }
 ];
+
 
 // ============================================================
 // 阿杰修车厂 - 交钥匙教学
@@ -238,6 +274,7 @@ const ahJieVideoData = [
         file: VIDEO_BASE_PATH_WORKSHOP + "workshoppasskey.mp4"
     }
 ];
+
 
 // ============================================================
 // Alphard 车内功能教学
@@ -256,7 +293,10 @@ const alphardVideoData = [
     {
         title: "⛽ Alphard 引擎盖和加油盖按钮",
         desc: "引擎盖与加油盖开关的位置",
-        file: VIDEO_BASE_PATH_INTRO + "bonet&fuel.mp4"
+        // ⚠️ 原档名是 bonet&fuel.mp4，& 在 URL 里易出错，
+        // 建议把影片改名为 bonet_fuel.mp4 后使用下面这行；
+        // 若坚持保留 & 符号，请用 bonet%26fuel.mp4
+        file: VIDEO_BASE_PATH_INTRO + "bonet_fuel.mp4"
     },
     {
         title: "💺 Alphard 副驾座位调整",
@@ -288,7 +328,7 @@ const alphardVideoData = [
         desc: "后备仓基本操作演示 2",
         file: VIDEO_BASE_PATH_INTRO + "luggage2.mp4"
     },
-	{
+    {
         title: "🧳 Alphard 后备仓操作 3",
         desc: "后备仓基本操作演示 3",
         file: VIDEO_BASE_PATH_INTRO + "luggage3.mp4"
